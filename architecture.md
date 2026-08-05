@@ -135,3 +135,17 @@ Dữ liệu bàn giao (Handoff Contract) từ Stage 1 sang Stage 2 là một str
 }
 ```
 Việc cấu trúc hóa Handoff giúp cho Policy Synthesis Agent ở Stage 2 hoạt động chính xác 100% mà không bị phụ thuộc vào sự mơ hồ của ngôn ngữ tự nhiên.
+
+---
+
+## 5. Nguyên lý Thiết kế Cốt lõi: Zero-Trust Input Grounding & Output Verification
+
+Hệ thống được xây dựng tuân theo hai nguyên tắc an toàn quan trọng trong phát triển Multi-Agent doanh nghiệp:
+
+1. **Khắc phục "Không tin tuyệt đối vào Input người dùng" (Zero-Trust Customer Input):**
+   * **Loại bỏ thông tin chủ quan:** Không ra quyết định dựa trên mô tả tự do (`customer_request.message`) của người dùng để phòng ngừa Prompt Injection và các thông tin sai lệch từ phía khách hàng.
+   * **Truy xuất dữ liệu khách quan (Grounded Facts):** Hệ thống chỉ trích xuất `claimed_order_id` để truy vấn trực tiếp vào cơ sở dữ liệu Olist nhằm làm rõ các mốc thời gian (`order_delivered_customer_date`, `shipping_limit_date`) và số tiền thực tế làm bằng chứng duy nhất.
+
+2. **Khắc phục "Không tin tuyệt đối vào Output mô hình" (Output Guardrail & Verification):**
+   * **Kiểm soát tính ảo giác (Hallucination Control):** Kết quả sinh ra từ các mô hình ngôn ngữ lớn (LLM như Qwen 7B) có thể chứa lỗi chính tả, sai lệch định dạng enum hoặc tính toán nhầm lẫn số tiền.
+   * **Rào chắn xác thực Verifier Agent:** Verifier Agent độc lập đóng vai trò gác cổng (Guardrail), đối soát Schema, kiểm tra các ràng buộc mảng và áp dụng quy tắc xác thực chặt chẽ để đảm bảo 100% kết quả đầu ra đạt chuẩn trước khi xuất file nộp bài.

@@ -79,6 +79,10 @@ Xây dựng pipeline multi-agent có khả năng tự động xử lý, kiểm s
   - *Cost & Performance*: Giảm thời gian xử lý từ 2 phút xuống dưới 2 giây cho cả 50 tickets. Tiết kiệm 95% chi phí token API.
 - **Bằng chứng quyết định phù hợp**: Pipeline chạy 50 cases chỉ trong 1.1 giây, 100% kết quả đầu ra vượt qua Verifier.
 
+### Triết lý Thiết kế Cốt lõi (Zero-Trust Input & Output Verification)
+- **Không tin tuyệt đối vào Input người dùng (Zero-Trust Customer Input):** Tuyệt đối không ra quyết định dựa trên mô tả tự do (`customer_request.message`) nhằm ngăn ngừa Prompt Injection hoặc thông tin chủ quan của khách hàng. Chỉ trích xuất `claimed_order_id` để truy vấn dữ liệu gốc (Grounded Facts) từ database Olist.
+- **Không tin tuyệt đối vào Output mô hình (Zero-Trust LLM Output):** Không sử dụng trực tiếp kết quả sinh ngẫu nhiên từ LLM cho các giao dịch tài chính hoặc định dạng JSON. Mọi output đều phải đi qua lớp kiểm tra chặt chẽ của Verifier Agent và Fallback Engine để bảo đảm 100% đúng quy tắc `EC_POLICY_V2`.
+
 ## 6. Một lỗi hoặc blocker đã xử lý
 - **Triệu chứng/lỗi nguyên văn 1**:
   ```text
