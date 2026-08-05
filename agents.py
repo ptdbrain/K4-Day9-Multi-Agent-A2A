@@ -91,6 +91,7 @@ class CustomerAgent:
         facts["handoff_contract"] = handoff
 
         # 3. LLM Reasoning (Nếu có API key)
+        facts["llm_analysis"] = None
         if self.client:
             try:
                 prompt = f"""
@@ -102,16 +103,17 @@ class CustomerAgent:
                 
                 Respond in JSON matching the facts.
                 """
-                self.client.chat.completions.create(
+                response = self.client.chat.completions.create(
                     model=self.model,
                     messages=[
-                        {"role": "system", "content": "You are a customer history analyzer agent."},
+                        {"role": "system", "content": "You are a customer history analyzer agent. Always reply in JSON."},
                         {"role": "user", "content": prompt}
                     ],
                     response_format={"type": "json_object"}
                 )
+                facts["llm_analysis"] = response.choices[0].message.content
             except Exception as e:
-                pass
+                facts["llm_analysis"] = f"LLM error: {str(e)}"
 
         return facts
 
@@ -188,6 +190,7 @@ class OrderProductAgent:
         facts["handoff_contract"] = handoff
 
         # 3. LLM Reasoning (Nếu có API key)
+        facts["llm_analysis"] = None
         if self.client:
             try:
                 prompt = f"""
@@ -199,16 +202,17 @@ class OrderProductAgent:
                 
                 Respond in JSON matching the facts.
                 """
-                self.client.chat.completions.create(
+                response = self.client.chat.completions.create(
                     model=self.model,
                     messages=[
-                        {"role": "system", "content": "You are an order and product details analyzer agent."},
+                        {"role": "system", "content": "You are an order and product details analyzer agent. Always reply in JSON."},
                         {"role": "user", "content": prompt}
                     ],
                     response_format={"type": "json_object"}
                 )
+                facts["llm_analysis"] = response.choices[0].message.content
             except Exception as e:
-                pass
+                facts["llm_analysis"] = f"LLM error: {str(e)}"
 
         return facts
 
@@ -294,6 +298,7 @@ class PaymentAgent:
         facts["handoff_contract"] = handoff
 
         # 3. LLM Reasoning (Nếu có API key)
+        facts["llm_analysis"] = None
         if self.client:
             try:
                 prompt = f"""
@@ -305,16 +310,17 @@ class PaymentAgent:
                 
                 Respond in JSON matching the facts.
                 """
-                self.client.chat.completions.create(
+                response = self.client.chat.completions.create(
                     model=self.model,
                     messages=[
-                        {"role": "system", "content": "You are a payment reconciliation analyzer agent."},
+                        {"role": "system", "content": "You are a payment reconciliation analyzer agent. Always reply in JSON."},
                         {"role": "user", "content": prompt}
                     ],
                     response_format={"type": "json_object"}
                 )
+                facts["llm_analysis"] = response.choices[0].message.content
             except Exception as e:
-                pass
+                facts["llm_analysis"] = f"LLM error: {str(e)}"
 
         return facts
 
@@ -391,6 +397,7 @@ class DeliveryAgent:
         facts["handoff_contract"] = handoff
 
         # 3. LLM Reasoning (Nếu có API key)
+        facts["llm_analysis"] = None
         if self.client:
             try:
                 prompt = f"""
@@ -401,16 +408,17 @@ class DeliveryAgent:
                 
                 Respond in JSON matching the facts.
                 """
-                self.client.chat.completions.create(
+                response = self.client.chat.completions.create(
                     model=self.model,
                     messages=[
-                        {"role": "system", "content": "You are a delivery timeline analyzer agent."},
+                        {"role": "system", "content": "You are a delivery timeline analyzer agent. Always reply in JSON."},
                         {"role": "user", "content": prompt}
                     ],
                     response_format={"type": "json_object"}
                 )
+                facts["llm_analysis"] = response.choices[0].message.content
             except Exception as e:
-                pass
+                facts["llm_analysis"] = f"LLM error: {str(e)}"
 
         return facts
 
@@ -574,6 +582,7 @@ class PolicyAgent:
         resolution["handoff_contract"] = handoff
 
         # 3. LLM Reasoning (Nếu có API key)
+        resolution["llm_analysis"] = None
         if self.client:
             try:
                 prompt = f"""
@@ -584,16 +593,17 @@ class PolicyAgent:
                 
                 Respond in JSON matching the facts.
                 """
-                self.client.chat.completions.create(
+                response = self.client.chat.completions.create(
                     model=self.model,
                     messages=[
-                        {"role": "system", "content": "You are a policy application agent."},
+                        {"role": "system", "content": "You are a policy application agent. Always reply in JSON."},
                         {"role": "user", "content": prompt}
                     ],
                     response_format={"type": "json_object"}
                 )
+                resolution["llm_analysis"] = response.choices[0].message.content
             except Exception as e:
-                pass
+                resolution["llm_analysis"] = f"LLM error: {str(e)}"
 
         return resolution
 
