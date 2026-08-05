@@ -472,7 +472,7 @@ class PolicyAgent:
             primary_issue = "late_delivery_logistics"
             responsible_parties = [{"party_type": "logistics_provider", "party_id": "LOGISTICS_PROVIDER"}]
             recommended_refund_brl = pay_facts["freight_total_brl"]
-            primary_action = "refund_shipping"  # TEST ONLY
+            primary_action = "refund_freight"
             root_cause_code = "CARRIER_DELIVERED_AFTER_ESTIMATE"
 
         # 5. valid_split_payment
@@ -544,6 +544,10 @@ class PolicyAgent:
         for rp in responsible_parties:
             if rp["party_type"] == "seller":
                 evidence_ids.append(f"seller:{rp['party_id']}")
+        # Với canceled/unavailable orders, thêm seller evidence từ affected entities
+        if primary_issue in ["canceled_order_paid", "unavailable_order_paid"]:
+            for s_id in order_facts["seller_ids"]:
+                evidence_ids.append(f"seller:{s_id}")
         evidence_ids.append(f"policy:{root_cause_code}")
         
         # Giới hạn 20 evidence IDs
