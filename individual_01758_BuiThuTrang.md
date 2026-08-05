@@ -2,125 +2,84 @@
 
 ## 1. Thông tin cá nhân
 
-| Thông tin       | Nội dung                    |
-| --------------- | --------------------------- |
-| Họ và tên       | Bùi Thu Trang               |
-| MSSV            | 2A202601758                    |
-| Khóa/Lớp        | K4                          |
-| Vai trò chính   | Kỹ sư xử lý dữ liệu (Payment & Policy Agent) |
-| Ngày hoàn thành | 2026-08-05                  |
+| Thông tin | Nội dung |
+|---|---|
+| Họ và tên | Bùi Thu Trang |
+| MSSV | 2A202601758 |
+| Khóa/Lớp | K4 / 2A |
+| Vai trò chính | Kỹ sư Payment và Policy |
+| Ngày hoàn thành | 2026-08-05 |
 
-## 2. Vai trò và phạm vi công việc
+## 2. Phạm vi công việc
 
-### Phần việc sở hữu
+| Phần việc | File/hàm chính | Input | Output bàn giao |
+|---|---|---|---|
+| Đối soát thanh toán | `agents.py` — `PaymentAgent` | `order_id`, item rows, payment rows | Tổng tiền, chênh lệch, reconciled, payment IDs |
+| Áp dụng policy | `agents.py` — `PolicyAgent` | Customer/Order/Payment/Delivery facts | Issue, responsibility, refund, root cause, actions |
+| Edge-case dữ liệu | Payment/Policy handoff | Order thiếu item hoặc nhiều payment | Null handling và quyết định ổn định |
 
-| Module/deliverable      | File/hàm phụ trách                              | Input nhận vào                                | Output bàn giao                            | Trạng thái   |
-| ----------------------- | ----------------------------------------------- | --------------------------------------------- | ------------------------------------------ | ------------ |
-| PaymentAgent            | `src/agents/payment_agent.py` → `run()`         | `order_id`, `raw_items`                       | payment reconciliation dict                | Hoàn thành   |
-| PolicyAgent             | `src/agents/policy_agent.py` → `run()`          | outputs tổng hợp từ các agent khác (Customer, Order, Payment, Delivery) | primary/secondary issues, refund, actions  | Hoàn thành   |
+Tôi phối hợp với Phan Trọng Đạt ở Coordinator/Delivery và với Phạm Quốc Minh ở Verifier/integration. Các thay đổi của tôi nằm trong pipeline chuẩn `run_pipeline.py` và được kiểm tra trên toàn bộ 50 ticket.
 
-### Việc hỗ trợ ngoài phạm vi chính
+## 3. Kết quả và bằng chứng
 
-| Hoạt động                              | Thành viên/module được hỗ trợ | Kết quả                                        |
-| -------------------------------------- | ----------------------------- | ---------------------------------------------- |
-| Tối ưu logic đối soát thanh toán       | OrderProductAgent             | Xử lý mượt mà các trường hợp order không có item (trả về null thay vì lỗi toán học) |
-| Chuẩn hóa dữ liệu đầu ra policy        | VerifierAgent                 | Đảm bảo đúng định dạng mảng (actions, issues) và giới hạn số lượng phần tử đầu ra. |
+- `payment_total_brl` là tổng mọi payment row; `expected_total_brl` là tổng item + freight; `reconciled` dùng sai số `<= 0.10 BRL`.
+- Payment ID giữ thứ tự `payment_sequential`; secondary issues và actions giữ thứ tự của `EC_POLICY_V2`.
+- PolicyAgent áp dụng đủ sáu primary issue theo đúng priority và chỉ hoàn tiền theo dữ liệu đã đối soát.
+- Kiểm tra cuối xác nhận 50/50 output khớp pipeline, schema/evidence có 0 lỗi và trace có đủ Policy/Verifier cho 50 case.
 
-## 3. Kết quả theo vai trò
-
-| Nhiệm vụ đã thực hiện              | File/hàm/artifact liên quan              | Kết quả bàn giao                       | Cách xác minh                           |
-| ---------------------------------- | ---------------------------------------- | -------------------------------------- | --------------------------------------- |
-| Phát triển PaymentAgent để đối soát thanh toán | `src/agents/payment_agent.py` | Tính toán chính xác chênh lệch thanh toán và trạng thái reconciled | Xác minh trường `payment_reconciliation` trong JSON output |
-| Chuyển hóa bộ luật EC_POLICY_V2 thành code | `src/agents/policy_agent.py` | Trích xuất chính xác primary issue, secondary issues, responsible parties | Kiểm tra output các rule dựa trên spec |
-
-Nêu một output cụ thể mà phần việc của bạn tạo ra hoặc giúp xác minh:
-Phần việc của mình tạo ra trực tiếp kết quả đánh giá (case assessment) và định hướng xử lý tài chính (financial resolution) trong toàn bộ 50 file JSON. Mọi quyết định về refund và bên chịu trách nhiệm đều đi qua PolicyAgent do mình thiết kế.
-
-## 4. Giải thích phần kỹ thuật đã thực hiện
-
-### Vấn đề cần giải quyết
-
-Bài toán yêu cầu tính toán chi tiết giá trị thanh toán thực tế của khách hàng so với tổng giá trị mặt hàng và phí ship. Sau đó, dựa trên toàn bộ bối cảnh (thanh toán, thời gian giao hàng, trạng thái đơn, lịch sử khách hàng), hệ thống phải xác định nguyên nhân cốt lõi (primary issue) và các vấn đề phụ theo một bộ quy tắc ngặt nghèo (EC_POLICY_V2).
-
-### Cách triển khai
-
-1. **PaymentAgent**: Mình tính toán `expected_total_brl` = tổng `price` + tổng `freight_value`. Sau đó đối soát với `payment_total_brl` (tổng các khoản thanh toán). Nếu độ lệch tuyệt đối <= 0.10 BRL, đánh dấu là `reconciled`. Mình xử lý kỹ edge case: nếu không có item nào, các trường tính toán phải set là `None`.
-2. **PolicyAgent**: Mình tổ chức code thành một Rule Engine tuần tự.
-   - Các `primary_issue` được đánh giá theo đúng thứ tự: Canceled -> Unavailable -> Late (Seller) -> Late (Logistics) -> Valid Split -> Unsupported.
-   - Các `secondary_issues` được kiểm tra độc lập và append vào mảng theo đúng thứ tự (multi_item -> multi_seller -> split_payment -> repeat_customer -> multiple_categories).
-   - Logic `resolution_actions` cũng được gán theo chuỗi rule if-else tương ứng.
-
-### Input, output và contract
-
-| Thành phần              | Mô tả                                               |
-| ----------------------- | --------------------------------------------------- |
-| Input                   | `raw_items`, `payments`, thông tin delivery, order status |
-| Output                  | Dictionary chứa assessment, evidence_ids, financial_resolution, actions |
-| Module phụ thuộc        | Data Loader (để truy vấn database)                  |
-| Module sử dụng output   | CoordinatorAgent (để gộp thành file JSON cuối cùng) |
-| Điều kiện lỗi cần xử lý | Xử lý order không có payment hoặc không có item     |
-
-### Cách xác minh
+Lệnh tái hiện:
 
 ```bash
-python main.py
+venv/bin/python run_pipeline.py
+venv/bin/python run_pipeline.py --ticket EC_001
 ```
 
-- **Kết quả mong đợi:** Code sinh ra JSON hợp lệ cho cả 50 case, PaymentAgent không crash khi gặp số chia/trừ null, PolicyAgent phân loại đủ 6 loại primary issue.
-- **Kết quả thực tế:** 50 file JSON được tạo thành công, có đủ primary issue, đối soát thanh toán chính xác, chạy rất nhanh (rule-based).
-- **Artifact/log:** `output/*.json`
+## 4. Giải thích kỹ thuật
 
-## 5. Một quyết định kỹ thuật quan trọng
+PaymentAgent tính:
 
-- **Bối cảnh:** Triển khai PolicyAgent. Việc xử lý rule khá rắc rối vì có nhiều điều kiện đan xen (đơn hủy, đơn giao trễ, đối soát dòng tiền).
-- **Các phương án đã cân nhắc:**
-  1. Dùng LLM prompt để nhồi toàn bộ logic EC_POLICY_V2 vào và bắt LLM tự suy luận.
-  2. Viết bằng Python if-else (Rule-based) để có kết quả deterministic.
-- **Phương án đã chọn:** Rule-based (If-else) trong PolicyAgent.
-- **Lý do:** Trade-off về correctness và cost/speed. LLM xử lý toán học và reasoning nhiều lớp thường hay bị ảo giác (hallucinate) sai 1-2 case (đặc biệt trong việc so sánh chuỗi ngày tháng hay sai số 0.10 BRL). Viết rule bằng Python đảm bảo độ chính xác tuyệt đối 100% dựa trên dữ liệu cứng và xử lý với tốc độ chớp nhoáng (chưa tới 1 giây cho 50 cases).
-- **Bằng chứng quyết định phù hợp:** Kết quả `trace.jsonl` ghi nhận chạy không có exception, không bị rate-limit, output hoàn toàn ổn định qua nhiều lần chạy.
+```text
+expected_total_brl = sum(price) + sum(freight_value)
+difference_brl     = payment_total_brl - expected_total_brl
+reconciled         = abs(difference_brl) <= 0.10
+```
 
-## 6. Một lỗi hoặc blocker đã xử lý
+Khi order không có item, `item_total_brl` và `freight_total_brl` là `0.0`; `expected_total_brl`, `difference_brl` và `reconciled` là `null`. Cách biểu diễn này phân biệt “không có cơ sở để đối soát” với “đã đối soát và chênh lệch bằng 0”.
 
-- **Triệu chứng/lỗi nguyên văn:**
-  Lỗi logic: Order không có item (trống `raw_items`) khiến phần tính tổng `price` trong PaymentAgent trả về sai logic so với spec (spec yêu cầu phải là `null`).
-- **Lệnh hoặc bước tái hiện:** Chạy thử trên case bị lỗi data (đơn chưa có item nào).
-- **Nguyên nhân gốc:** Hàm `sum()` của list rỗng trong Python trả về `0`. Nếu tính `0 - 0 = 0` thì `difference_brl` = 0 và `reconciled` = True, điều này sai hoàn toàn so với yêu cầu bài toán (bài toán yêu cầu nếu không có item thì expected_total, difference, reconciled phải là `null`).
-- **Cách xử lý:**
-  Sửa lại logic trong `PaymentAgent` kiểm tra độ dài list `raw_items` trước khi tính toán.
-  ```python
-  if not raw_items:
-      # Set tất cả các trường tính toán thành None
-      result["expected_total_brl"] = None
-      # ...
-  else:
-      # Thực hiện sum và trừ bình thường
-  ```
-- **Cách xác minh sau khi sửa:** Chạy lại `python main.py` và kiểm tra JSON output của case lỗi, đảm bảo các trường `expected_total_brl`, `difference_brl` và `reconciled` là `null`.
-- **Điều học được:** Khi xử lý dữ liệu tài chính, `0` và `null/None` mang ý nghĩa hoàn toàn khác biệt. Phải đọc rất kỹ spec trước khi mặc định return `0` cho exception.
+PolicyAgent là rule engine tuần tự:
 
-## 7. Hiểu biết về luồng end-to-end
+1. canceled paid
+2. unavailable paid
+3. late delivery do seller
+4. late delivery do logistics
+5. valid split payment
+6. unsupported late claim
 
-1. **Dữ liệu đi từ CSV đến output như thế nào?**
-   Các agent độc lập lấy dữ liệu từ `DataLoader` (đã nạp CSV). `CoordinatorAgent` điều phối luồng: trước tiên gọi `CustomerAgent`, tiếp đó gọi `OrderProductAgent`, truyền kết quả cho `PaymentAgent` và `DeliveryAgent` xử lý song song, sau cùng gom lại đưa vào `PolicyAgent` quyết định lỗi rồi chuyển cho `VerifierAgent` chuẩn hóa xuất JSON.
-2. **Evaluation set và ground-truth dùng để đo quality ra sao?**
-   50 case input đại diện cho nhiều góc độ nghiệp vụ (giao trễ, hủy đơn, lỗi đối soát). Ground-truth JSON chứa đáp án chính xác của con người. Pipeline sẽ so khớp output với ground truth và cho điểm từng block (Payment 15%, Policy 15%...).
-3. **Quality checks trong bài lab:**
-   Các ràng buộc mảng không vượt quá giới hạn (ví dụ tối đa 5 payment_ids), dữ liệu NULL xử lý đúng chuẩn `null` của JSON thay vì NaN hay chuỗi "NaT", đảm bảo logic không sụp đổ vì thiếu data.
-4. **Vì sao cùng một test set cho mọi điều kiện?**
-   Để duy trì tính công bằng (baseline đo lường) và xác nhận mọi component trong luồng agent xử lý ổn định. Thay đổi đầu vào sẽ làm rối kết quả, không rõ hệ thống hỏng do thuật toán hay do dữ liệu mới.
-5. **Repair được xem là thành công dựa trên gì?**
-   Hệ thống không bị crash, 50 file JSON xuất ra hợp lệ về schema và logic nghiệp vụ. Thời gian chạy tối ưu, không có dấu vết ảo giác từ dữ liệu.
+Sau primary issue, agent thêm secondary issues và actions đúng business order, dựng root-cause policy ID và chỉ thêm seller evidence khi seller chịu trách nhiệm.
 
-## 8. Cam kết của thành viên
+## 5. Quyết định kỹ thuật quan trọng
 
-Đánh dấu sau khi tự kiểm tra:
+Tôi chọn Python rule-based thay vì đưa logic tài chính vào prompt. Phép cộng tiền, ngưỡng 0.10 BRL và priority policy cần deterministic để cùng input luôn cho cùng output. Model `qwen2.5:7b-instruct-q3_K_S` (dưới 10B) vẫn được cấu hình tùy chọn, nhưng không tham gia quyết định tài chính hay trace nộp bài.
 
-- [x] Nội dung báo cáo phản ánh đúng phần việc và mức hiểu của tôi.
-- [x] Tôi có thể giải thích luồng end-to-end, không chỉ module mình phụ trách.
-- [x] Tôi không ghi "đã chạy thành công" cho phần chưa được kiểm chứng.
-- [x] Báo cáo không chứa `.env`, API key, token hoặc secret.
-- [x] Báo cáo này không phải bản sao nguyên văn của báo cáo nhóm hoặc báo cáo thành viên khác.
+## 6. Lỗi đã xử lý
+
+Với `raw_items` rỗng, `sum([])` trả về 0; nếu tiếp tục tính, hệ thống sẽ tạo `difference_brl = 0` và `reconciled = true`, tức là biến dữ liệu thiếu thành một fact đối soát giả. Tôi thêm nhánh xử lý tại PaymentAgent để ba trường phụ thuộc vào item trở thành `null`, trong khi tổng item/freight vẫn giữ `0.0` theo schema K4. Batch sau sửa chạy đủ 50 ticket và không cần sửa tay output.
+
+## 7. Hiểu biết end-to-end
+
+- Customer và Order agent cung cấp identity/item/product context.
+- Payment và Delivery agent cung cấp fact tài chính/thời gian.
+- PolicyAgent quyết định theo V2, không dựa vào lời khiếu nại tự do.
+- Coordinator ghép evidence IDs; Verifier kiểm tra schema và limits.
+- Một ticket lỗi phải được sửa ở Payment/Policy hoặc contract chung rồi chạy lại, không sửa JSON kết quả bằng tay.
+
+## 8. Cam kết
+
+- [x] Báo cáo phản ánh pipeline và artefact hiện tại của nhóm.
+- [x] Tôi có thể giải thích luồng end-to-end và phần việc của mình.
+- [x] Không ghi API key, token hoặc secret.
+- [x] Không khẳng định chất lượng bằng số liệu chưa được kiểm chứng.
 
 **Họ và tên:** Bùi Thu Trang
+
 **Ngày xác nhận:** 2026-08-05
