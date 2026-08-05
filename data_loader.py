@@ -64,13 +64,7 @@ class OlistDatabase:
         
         # Join với products để lấy category name
         items_joined = items_df.merge(self.products, on="product_id", how="left")
-        items_list = items_joined.to_dict(orient="records")
-        # Translate category name to English if available
-        for item in items_list:
-            cat = item.get("product_category_name")
-            if cat in self.cat_translation:
-                item["product_category_name"] = self.cat_translation[cat]
-        return items_list
+        return items_joined.to_dict(orient="records")
 
     def get_order_payments(self, order_id):
         """Lấy danh sách các khoản thanh toán cho đơn hàng"""
