@@ -472,7 +472,7 @@ class PolicyAgent:
             primary_issue = "late_delivery_logistics"
             responsible_parties = [{"party_type": "logistics_provider", "party_id": "LOGISTICS_PROVIDER"}]
             recommended_refund_brl = pay_facts["freight_total_brl"]
-            primary_action = "refund_freight"
+            primary_action = "refund_shipping"  # TEST ONLY
             root_cause_code = "CARRIER_DELIVERED_AFTER_ESTIMATE"
 
         # 5. valid_split_payment
