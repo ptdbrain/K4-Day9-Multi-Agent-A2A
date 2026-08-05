@@ -491,20 +491,25 @@ class PolicyAgent:
             primary_action = "reject_late_refund"
             root_cause_code = "DELIVERY_WITHIN_ESTIMATE"
 
-        # Secondary Issues
+        # Secondary Issues theo đúng thứ tự 1..5:
+        # 1. multi_item_order: có từ 2 item row.
+        # 2. multi_seller_order: có từ 2 seller khác nhau.
+        # 3. split_payment: có từ 2 payment row.
+        # 4. repeat_customer: cùng customer_unique_id có order khác.
+        # 5. multiple_categories: có từ 2 category khác nhau.
         secondary_issues = []
-        if order_facts["multi_item_order"]:
+        if order_facts.get("multi_item_order", False):
             secondary_issues.append("multi_item_order")
-        if order_facts["multi_seller_order"]:
+        if order_facts.get("multi_seller_order", False):
             secondary_issues.append("multi_seller_order")
-        if pay_facts["split_payment"]:
+        if pay_facts.get("split_payment", False):
             secondary_issues.append("split_payment")
-        if cust_facts["repeat_customer"]:
+        if cust_facts.get("repeat_customer", False):
             secondary_issues.append("repeat_customer")
-        if order_facts["multiple_categories"]:
+        if order_facts.get("multiple_categories", False):
             secondary_issues.append("multiple_categories")
 
-        case_status = "action_required" if recommended_refund_brl > 0 else "no_action"
+        case_status = "action_required" if (recommended_refund_brl is not None and recommended_refund_brl > 0) else "no_action"
 
         # Actions bổ sung
         resolution_actions = [primary_action]
