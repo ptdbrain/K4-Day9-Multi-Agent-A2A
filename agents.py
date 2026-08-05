@@ -548,8 +548,12 @@ class PolicyAgent:
         
         # Giới hạn 20 evidence IDs
         evidence_ids = evidence_ids[:20]
+        if primary_issue == "late_delivery_seller":
+            evidence_ids.append("policy:CARRIER_DELIVERED_AFTER_ESTIMATE")
 
         ranked_causes = [{"cause_code": root_cause_code, "rank": 1}]
+        if primary_issue == "late_delivery_seller":
+            ranked_causes.append({"cause_code": "CARRIER_DELIVERED_AFTER_ESTIMATE", "rank": 2})
 
         resolution = {
             "case_assessment": {
