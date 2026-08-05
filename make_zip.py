@@ -1,40 +1,38 @@
-"""
-make_zip.py — tạo output.zip đúng chuẩn nộp bài.
+"""Build the required submission.zip without secrets, caches, or source code."""
 
-Files trong ZIP phải ở ROOT (EC_001.json), KHÔNG phải trong subdir (output/EC_001.json).
-Dùng script này thay vì PowerShell Compress-Archive (PowerShell lưu cả path).
-
-Usage:
-    python make_zip.py
-"""
-import os
+import json
 import zipfile
 from pathlib import Path
 
+
 OUTPUT_DIR = Path("output")
-ZIP_NAME = "output.zip"
+REQUIRED_FILES = (Path("architecture.md"), Path("trace.jsonl"), Path("metadata.json"))
+ZIP_NAME = Path("submission.zip")
 
 
 def make_zip() -> None:
-    files = sorted(OUTPUT_DIR.glob("EC_*.json"))
-    if len(files) != 50:
-        print(f"[WARNING] Found {len(files)} files, expected 50!")
+    outputs = sorted(OUTPUT_DIR.glob("EC_*.json"))
+    expected = [f"EC_{number:03}.json" for number in range(1, 51)]
+    if [path.name for path in outputs] != expected:
+        raise SystemExit("output/ must contain exactly EC_001.json through EC_050.json")
+    if missing := [str(path) for path in REQUIRED_FILES if not path.is_file()]:
+        raise SystemExit(f"Missing required files: {', '.join(missing)}")
 
-    with zipfile.ZipFile(ZIP_NAME, "w", zipfile.ZIP_DEFLATED) as zf:
-        for f in files:
-            # arcname = only filename, no directory prefix
-            zf.write(f, arcname=f.name)
+    for path in (*outputs, Path("metadata.json")):
+        json.loads(path.read_text(encoding="utf-8"))
+    for line_number, line in enumerate(Path("trace.jsonl").read_text(encoding="utf-8").splitlines(), 1):
+        try:
+            json.loads(line)
+        except json.JSONDecodeError as error:
+            raise SystemExit(f"Invalid trace.jsonl line {line_number}: {error}") from error
 
-    # Verify
-    with zipfile.ZipFile(ZIP_NAME, "r") as z:
-        names = z.namelist()
-        bad = [n for n in names if "/" in n or "\\" in n]
-        print(f"ZIP '{ZIP_NAME}': {len(names)} files")
-        print(f"  First: {names[0]}  Last: {names[-1]}")
-        if bad:
-            print(f"  [ERROR] Bad paths found: {bad}")
-        else:
-            print("  [OK] All files at root — ready to submit!")
+    with zipfile.ZipFile(ZIP_NAME, "w", zipfile.ZIP_DEFLATED) as archive:
+        for path in outputs:
+            archive.write(path, path.as_posix())
+        for path in REQUIRED_FILES:
+            archive.write(path, path.name)
+
+    print(f"Built {ZIP_NAME}: 50 outputs + architecture.md + trace.jsonl + metadata.json")
 
 
 if __name__ == "__main__":

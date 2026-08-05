@@ -710,6 +710,12 @@ class CoordinatorAgent:
             order_id, order_details, cust_facts, order_facts, pay_facts, del_facts
         )
 
+        # Normalize the shared handoff contract at the orchestration boundary.
+        for result in (cust_facts, order_facts, pay_facts, del_facts, policy_resolution):
+            handoff = result["handoff_contract"]
+            handoff["ticket_id"] = case_id
+            handoff["found_facts"].setdefault("order_id", order_id)
+
         # Trộn kết quả
         final_json = {
             "case_id": case_id,

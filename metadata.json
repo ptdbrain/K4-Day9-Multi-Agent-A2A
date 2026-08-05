@@ -5,5 +5,16 @@
   "model": "qwen2.5:7b-instruct-q3_K_S",
   "parameter_size": "under 10B",
   "framework": "Custom Python Multi-Agent",
-  "runtime": "Python 3.14.6"
+  "runtime": "Python 3.14.6",
+  "execution_mode": "deterministic rule-based; optional LLM was not used in the submitted trace",
+  "tools": ["Python", "pandas", "Olist CSV"],
+  "agents": [
+    "CoordinatorAgent",
+    "CustomerAgent",
+    "OrderProductAgent",
+    "PaymentAgent",
+    "DeliveryAgent",
+    "PolicyAgent",
+    "VerifierAgent"
+  ]
 }
