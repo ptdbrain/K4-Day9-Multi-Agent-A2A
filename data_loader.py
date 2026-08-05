@@ -62,8 +62,9 @@ class OlistDatabase:
         if items_df.empty:
             return []
         
-        # Join với products để lấy category name
+        # Join với products để lấy category name, sort theo order_item_id cho thứ tự ổn định
         items_joined = items_df.merge(self.products, on="product_id", how="left")
+        items_joined = items_joined.sort_values("order_item_id")
         return items_joined.to_dict(orient="records")
 
     def get_order_payments(self, order_id):
@@ -71,5 +72,6 @@ class OlistDatabase:
         payments_df = self.order_payments[self.order_payments["order_id"] == order_id]
         if payments_df.empty:
             return []
-        # Giữ thứ tự ổn định theo dữ liệu nguồn (không sort_values theo payment_sequential)
+        # Sort theo payment_sequential để đảm bảo thứ tự đúng (1, 2, 3...)
+        payments_df = payments_df.sort_values("payment_sequential")
         return payments_df.to_dict(orient="records")
