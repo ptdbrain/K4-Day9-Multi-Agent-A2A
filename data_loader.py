@@ -53,7 +53,7 @@ class OlistDatabase:
         cust_ids = self.customers[self.customers["customer_unique_id"] == customer_unique_id]["customer_id"].tolist()
         # Tìm các order tương ứng và giữ thứ tự ổn định theo dữ liệu nguồn (không sort theo timestamp)
         cust_orders = self.orders[self.orders["customer_id"].isin(cust_ids)].copy()
-        related_orders = cust_orders[cust_orders["order_id"] != current_order_id]
+        related_orders = cust_orders[(cust_orders["order_id"] != current_order_id) & (~cust_orders["order_status"].isin(["canceled", "unavailable"]))]
         return related_orders["order_id"].tolist()
 
     def get_order_items(self, order_id):
