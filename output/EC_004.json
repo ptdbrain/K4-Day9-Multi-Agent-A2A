@@ -40,14 +40,7 @@
     "estimated_delivery_at": "2018-05-10 00:00:00",
     "carrier_handoff_at": null,
     "delivery_variance_hours": null,
-    "seller_handoff_analysis": [
-      {
-        "seller_id": "340636a908b13bbe0f4fb63fbe1d0c03",
-        "shipping_limit_at": "2018-05-03 08:31:17",
-        "handoff_variance_hours": null,
-        "late_handoff": false
-      }
-    ],
+    "seller_handoff_analysis": [],
     "late_handoff_seller_ids": []
   },
   "payment_reconciliation": {

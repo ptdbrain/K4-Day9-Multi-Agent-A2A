@@ -25,8 +25,8 @@
       "1900267e848ceeba8fa32d80c1a5f5a8"
     ],
     "payment_ids": [
-      "7c29f6fa9efcbf410b4bbb9362b9f7c9:2",
-      "7c29f6fa9efcbf410b4bbb9362b9f7c9:1"
+      "7c29f6fa9efcbf410b4bbb9362b9f7c9:1",
+      "7c29f6fa9efcbf410b4bbb9362b9f7c9:2"
     ]
   },
   "customer_context": {
@@ -79,8 +79,8 @@
     "difference_brl": 0.0,
     "reconciled": true,
     "payment_types": [
-      "voucher",
-      "credit_card"
+      "credit_card",
+      "voucher"
     ]
   },
   "root_cause_analysis": {
@@ -97,8 +97,8 @@
     "item:7c29f6fa9efcbf410b4bbb9362b9f7c9:1",
     "item:7c29f6fa9efcbf410b4bbb9362b9f7c9:2",
     "item:7c29f6fa9efcbf410b4bbb9362b9f7c9:3",
-    "payment:7c29f6fa9efcbf410b4bbb9362b9f7c9:2",
     "payment:7c29f6fa9efcbf410b4bbb9362b9f7c9:1",
+    "payment:7c29f6fa9efcbf410b4bbb9362b9f7c9:2",
     "policy:MULTIPLE_PAYMENTS_RECONCILED"
   ],
   "financial_resolution": {

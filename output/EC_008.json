@@ -23,8 +23,8 @@
       "c32fc744b9160ac853450488e3cfea93"
     ],
     "payment_ids": [
-      "23c312ca9f0242a48a95e5643bee2645:2",
-      "23c312ca9f0242a48a95e5643bee2645:1"
+      "23c312ca9f0242a48a95e5643bee2645:1",
+      "23c312ca9f0242a48a95e5643bee2645:2"
     ]
   },
   "customer_context": {
@@ -70,8 +70,8 @@
     "difference_brl": 0.0,
     "reconciled": true,
     "payment_types": [
-      "voucher",
-      "credit_card"
+      "credit_card",
+      "voucher"
     ]
   },
   "root_cause_analysis": {
@@ -87,8 +87,8 @@
     "order:23c312ca9f0242a48a95e5643bee2645",
     "item:23c312ca9f0242a48a95e5643bee2645:1",
     "item:23c312ca9f0242a48a95e5643bee2645:2",
-    "payment:23c312ca9f0242a48a95e5643bee2645:2",
     "payment:23c312ca9f0242a48a95e5643bee2645:1",
+    "payment:23c312ca9f0242a48a95e5643bee2645:2",
     "policy:MULTIPLE_PAYMENTS_RECONCILED"
   ],
   "financial_resolution": {

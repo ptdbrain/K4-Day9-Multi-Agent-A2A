@@ -23,8 +23,8 @@
       "7d13fca15225358621be4086e1eb0964"
     ],
     "payment_ids": [
-      "919baca007d9525b6668c18f79a33197:2",
-      "919baca007d9525b6668c18f79a33197:1"
+      "919baca007d9525b6668c18f79a33197:1",
+      "919baca007d9525b6668c18f79a33197:2"
     ]
   },
   "customer_context": {
@@ -86,8 +86,8 @@
     "order:919baca007d9525b6668c18f79a33197",
     "item:919baca007d9525b6668c18f79a33197:1",
     "item:919baca007d9525b6668c18f79a33197:2",
-    "payment:919baca007d9525b6668c18f79a33197:2",
     "payment:919baca007d9525b6668c18f79a33197:1",
+    "payment:919baca007d9525b6668c18f79a33197:2",
     "policy:MULTIPLE_PAYMENTS_RECONCILED"
   ],
   "financial_resolution": {

@@ -20,9 +20,9 @@
       "de23c3b98a88888289c6f5cc1209054a"
     ],
     "payment_ids": [
-      "9c9353e8fd52f68f8442e580b5f2bba6:3",
       "9c9353e8fd52f68f8442e580b5f2bba6:1",
-      "9c9353e8fd52f68f8442e580b5f2bba6:2"
+      "9c9353e8fd52f68f8442e580b5f2bba6:2",
+      "9c9353e8fd52f68f8442e580b5f2bba6:3"
     ]
   },
   "customer_context": {
@@ -63,8 +63,8 @@
     "difference_brl": 0.0,
     "reconciled": true,
     "payment_types": [
-      "voucher",
-      "credit_card"
+      "credit_card",
+      "voucher"
     ]
   },
   "root_cause_analysis": {
@@ -84,9 +84,9 @@
   "evidence_ids": [
     "order:9c9353e8fd52f68f8442e580b5f2bba6",
     "item:9c9353e8fd52f68f8442e580b5f2bba6:1",
-    "payment:9c9353e8fd52f68f8442e580b5f2bba6:3",
     "payment:9c9353e8fd52f68f8442e580b5f2bba6:1",
     "payment:9c9353e8fd52f68f8442e580b5f2bba6:2",
+    "payment:9c9353e8fd52f68f8442e580b5f2bba6:3",
     "policy:CARRIER_DELIVERED_AFTER_ESTIMATE"
   ],
   "financial_resolution": {

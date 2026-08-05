@@ -24,9 +24,9 @@
     ],
     "payment_ids": [
       "ccec592b58e122dc2bfc2305152d9603:1",
-      "ccec592b58e122dc2bfc2305152d9603:4",
+      "ccec592b58e122dc2bfc2305152d9603:2",
       "ccec592b58e122dc2bfc2305152d9603:3",
-      "ccec592b58e122dc2bfc2305152d9603:2"
+      "ccec592b58e122dc2bfc2305152d9603:4"
     ]
   },
   "customer_context": {
@@ -90,9 +90,9 @@
     "item:ccec592b58e122dc2bfc2305152d9603:1",
     "item:ccec592b58e122dc2bfc2305152d9603:2",
     "payment:ccec592b58e122dc2bfc2305152d9603:1",
-    "payment:ccec592b58e122dc2bfc2305152d9603:4",
-    "payment:ccec592b58e122dc2bfc2305152d9603:3",
     "payment:ccec592b58e122dc2bfc2305152d9603:2",
+    "payment:ccec592b58e122dc2bfc2305152d9603:3",
+    "payment:ccec592b58e122dc2bfc2305152d9603:4",
     "policy:MULTIPLE_PAYMENTS_RECONCILED"
   ],
   "financial_resolution": {
