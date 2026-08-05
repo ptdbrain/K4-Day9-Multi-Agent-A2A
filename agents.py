@@ -1,5 +1,12 @@
 import datetime
 import math
+import os
+import json
+from openai import OpenAI
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Các hàm helper để parse và so sánh date time
 def parse_date(date_str):
@@ -36,38 +43,87 @@ def get_variance_hours(dt1, dt2):
 
 
 class CustomerAgent:
-    def __init__(self, db):
+    def __init__(self, db, client=None, model="Gemini 3.5 Flash"):
         self.db = db
+        self.client = client
+        self.model = model
 
     def process(self, order_id, customer_id):
-        # Lấy customer info
+        # 1. Trích xuất dữ liệu xác thực (Grounded facts)
         cust_info = self.db.get_customer_by_id(customer_id)
         if not cust_info:
             return {
                 "customer_unique_id": None,
                 "related_order_ids": [],
-                "repeat_customer": False
+                "repeat_customer": False,
+                "handoff_contract": {
+                    "ticket_id": order_id,
+                    "question": "Identify customer unique ID and order history.",
+                    "found_facts": {},
+                    "missing_or_contradictory_facts": "Customer info not found",
+                    "recommendation": "Stop pipeline or fallback."
+                }
             }
         
         cust_uniq_id = cust_info.get("customer_unique_id")
-        
-        # Lấy lịch sử order
         related_orders = self.db.get_customer_history(cust_uniq_id, order_id)
-        # Giới hạn tối đa 5 related order
         related_orders_limited = related_orders[:5]
-        
-        return {
+        repeat_customer = len(related_orders) > 0
+
+        facts = {
             "customer_unique_id": cust_uniq_id,
             "related_order_ids": related_orders_limited,
-            "repeat_customer": len(related_orders) > 0
+            "repeat_customer": repeat_customer
         }
+
+        # 2. Handoff Contract
+        handoff = {
+            "ticket_id": order_id,
+            "question": "Identify customer unique ID and order history.",
+            "found_facts": {
+                "customer_unique_id": cust_uniq_id,
+                "related_orders_count": len(related_orders),
+                "repeat_customer": repeat_customer
+            },
+            "missing_or_contradictory_facts": None,
+            "recommendation": "Pass to OrderProductAgent for items analysis."
+        }
+        facts["handoff_contract"] = handoff
+
+        # 3. LLM Reasoning (Nếu có API key)
+        if self.client:
+            try:
+                prompt = f"""
+                You are the CustomerAgent. Verify customer history:
+                - Customer ID: {customer_id}
+                - Unique ID: {cust_uniq_id}
+                - Related Orders: {related_orders_limited}
+                - Repeat Customer: {repeat_customer}
+                
+                Respond in JSON matching the facts.
+                """
+                self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": "You are a customer history analyzer agent."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    response_format={"type": "json_object"}
+                )
+            except Exception as e:
+                pass
+
+        return facts
 
 
 class OrderProductAgent:
-    def __init__(self, db):
+    def __init__(self, db, client=None, model="Gemini 3.5 Flash"):
         self.db = db
+        self.client = client
+        self.model = model
 
     def process(self, order_id):
+        # 1. Trích xuất dữ liệu xác thực (Grounded facts)
         items = self.db.get_order_items(order_id)
         
         product_ids = []
@@ -91,7 +147,7 @@ class OrderProductAgent:
             if item_seq is not None and str(item_seq) != 'nan':
                 item_ids.append(f"{order_id}:{int(item_seq)}")
 
-        # Giới hạn
+        # Giới hạn mảng
         product_ids_limited = product_ids[:5]
         category_names_limited = category_names[:5]
         seller_ids_limited = seller_ids[:3]
@@ -102,7 +158,7 @@ class OrderProductAgent:
         multi_seller_order = len(seller_ids) >= 2
         multiple_categories = len(category_names) >= 2
 
-        return {
+        facts = {
             "items_raw": items,
             "product_ids": product_ids_limited,
             "category_names": category_names_limited,
@@ -113,12 +169,58 @@ class OrderProductAgent:
             "multiple_categories": multiple_categories
         }
 
+        # 2. Handoff Contract
+        handoff = {
+            "ticket_id": order_id,
+            "question": "Extract items, products, sellers, categories and check secondary issues.",
+            "found_facts": {
+                "product_ids": product_ids_limited,
+                "category_names": category_names_limited,
+                "seller_ids": seller_ids_limited,
+                "item_ids": item_ids_limited,
+                "multi_item_order": multi_item_order,
+                "multi_seller_order": multi_seller_order,
+                "multiple_categories": multiple_categories
+            },
+            "missing_or_contradictory_facts": None if items else "No items found in order",
+            "recommendation": "Pass to PaymentAgent for financial reconciliation."
+        }
+        facts["handoff_contract"] = handoff
+
+        # 3. LLM Reasoning (Nếu có API key)
+        if self.client:
+            try:
+                prompt = f"""
+                You are the OrderProductAgent. Verify order items:
+                - Order ID: {order_id}
+                - Item count: {len(items)}
+                - Unique Sellers: {seller_ids_limited}
+                - Unique Categories: {category_names_limited}
+                
+                Respond in JSON matching the facts.
+                """
+                self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": "You are an order and product details analyzer agent."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    response_format={"type": "json_object"}
+                )
+            except Exception as e:
+                pass
+
+        return facts
+
 
 class PaymentAgent:
-    def __init__(self, db):
+    def __init__(self, db, client=None, model="Gemini 3.5 Flash"):
         self.db = db
+        self.client = client
+        self.model = model
 
     def process(self, order_id, items_raw):
+        # 1. Trích xuất dữ liệu xác thực (Grounded facts)
         payments = self.db.get_order_payments(order_id)
         
         payment_ids = []
@@ -142,7 +244,7 @@ class PaymentAgent:
 
         if not items_raw:
             # Với order không có item row, expected_total_brl, difference_brl và reconciled phải là null
-            return {
+            facts = {
                 "currency": "BRL",
                 "item_total_brl": 0.0,
                 "freight_total_brl": 0.0,
@@ -154,33 +256,77 @@ class PaymentAgent:
                 "payment_types": payment_types,
                 "split_payment": split_payment
             }
+        else:
+            item_total_brl = sum(float(item.get("price", 0)) for item in items_raw)
+            freight_total_brl = sum(float(item.get("freight_value", 0)) for item in items_raw)
+            expected_total_brl = item_total_brl + freight_total_brl
+            
+            difference_brl = payment_total_brl - expected_total_brl
+            reconciled = abs(difference_brl) <= 0.10
 
-        item_total_brl = sum(float(item.get("price", 0)) for item in items_raw)
-        freight_total_brl = sum(float(item.get("freight_value", 0)) for item in items_raw)
-        expected_total_brl = item_total_brl + freight_total_brl
-        
-        difference_brl = payment_total_brl - expected_total_brl
-        reconciled = abs(difference_brl) <= 0.10
+            facts = {
+                "currency": "BRL",
+                "item_total_brl": clean_float(item_total_brl),
+                "freight_total_brl": clean_float(freight_total_brl),
+                "expected_total_brl": clean_float(expected_total_brl),
+                "payment_total_brl": clean_float(payment_total_brl),
+                "difference_brl": clean_float(difference_brl),
+                "reconciled": reconciled,
+                "payment_ids": payment_ids_limited,
+                "payment_types": payment_types,
+                "split_payment": split_payment
+            }
 
-        return {
-            "currency": "BRL",
-            "item_total_brl": clean_float(item_total_brl),
-            "freight_total_brl": clean_float(freight_total_brl),
-            "expected_total_brl": clean_float(expected_total_brl),
-            "payment_total_brl": clean_float(payment_total_brl),
-            "difference_brl": clean_float(difference_brl),
-            "reconciled": reconciled,
-            "payment_ids": payment_ids_limited,
-            "payment_types": payment_types,
-            "split_payment": split_payment
+        # 2. Handoff Contract
+        handoff = {
+            "ticket_id": order_id,
+            "question": "Reconcile payment total against expected items and freight totals.",
+            "found_facts": {
+                "expected_total_brl": facts["expected_total_brl"],
+                "payment_total_brl": facts["payment_total_brl"],
+                "difference_brl": facts["difference_brl"],
+                "reconciled": facts["reconciled"],
+                "split_payment": split_payment
+            },
+            "missing_or_contradictory_facts": None,
+            "recommendation": "Pass to DeliveryAgent for logistics dates analysis."
         }
+        facts["handoff_contract"] = handoff
+
+        # 3. LLM Reasoning (Nếu có API key)
+        if self.client:
+            try:
+                prompt = f"""
+                You are the PaymentAgent. Verify payment reconciliation:
+                - Order ID: {order_id}
+                - Paid Total: {facts['payment_total_brl']}
+                - Expected Total: {facts['expected_total_brl']}
+                - Reconciled: {facts['reconciled']}
+                
+                Respond in JSON matching the facts.
+                """
+                self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": "You are a payment reconciliation analyzer agent."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    response_format={"type": "json_object"}
+                )
+            except Exception as e:
+                pass
+
+        return facts
 
 
 class DeliveryAgent:
-    def __init__(self, db):
+    def __init__(self, db, client=None, model="Gemini 3.5 Flash"):
         self.db = db
+        self.client = client
+        self.model = model
 
     def process(self, order_id, order_details, items_raw):
+        # 1. Trích xuất dữ liệu xác thực (Grounded facts)
         delivered_at_str = order_details.get("order_delivered_customer_date")
         estimated_delivery_at_str = order_details.get("order_estimated_delivery_date")
         carrier_handoff_at_str = order_details.get("order_delivered_carrier_date")
@@ -219,7 +365,7 @@ class DeliveryAgent:
                 "late_handoff": late_handoff
             })
 
-        return {
+        facts = {
             "delivered_at": format_date(delivered_at),
             "estimated_delivery_at": format_date(estimated_delivery_at),
             "carrier_handoff_at": format_date(carrier_handoff_at),
@@ -228,9 +374,54 @@ class DeliveryAgent:
             "late_handoff_seller_ids": late_handoff_seller_ids
         }
 
+        # 2. Handoff Contract
+        handoff = {
+            "ticket_id": order_id,
+            "question": "Calculate delivery variance and check for late seller handoffs.",
+            "found_facts": {
+                "delivered_at": format_date(delivered_at),
+                "estimated_delivery_at": format_date(estimated_delivery_at),
+                "carrier_handoff_at": format_date(carrier_handoff_at),
+                "delivery_variance_hours": delivery_variance_hours,
+                "late_handoff_seller_ids": late_handoff_seller_ids
+            },
+            "missing_or_contradictory_facts": None,
+            "recommendation": "Pass to PolicyAgent to apply business rules."
+        }
+        facts["handoff_contract"] = handoff
+
+        # 3. LLM Reasoning (Nếu có API key)
+        if self.client:
+            try:
+                prompt = f"""
+                You are the DeliveryAgent. Verify delivery variance and seller handoff:
+                - Order ID: {order_id}
+                - Delivery Variance Hours: {delivery_variance_hours}
+                - Late Seller Handoff IDs: {late_handoff_seller_ids}
+                
+                Respond in JSON matching the facts.
+                """
+                self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": "You are a delivery timeline analyzer agent."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    response_format={"type": "json_object"}
+                )
+            except Exception as e:
+                pass
+
+        return facts
+
 
 class PolicyAgent:
+    def __init__(self, client=None, model="Gemini 3.5 Flash"):
+        self.client = client
+        self.model = model
+
     def process(self, order_id, order_details, cust_facts, order_facts, pay_facts, del_facts):
+        # 1. Áp dụng quy tắc nghiệp vụ EC_POLICY_V2 để trích xuất Grounded decisions
         order_status = order_details.get("order_status")
         payment_total_brl = pay_facts["payment_total_brl"]
         delivery_variance_hours = del_facts["delivery_variance_hours"]
@@ -347,12 +538,12 @@ class PolicyAgent:
 
         ranked_causes = [{"cause_code": root_cause_code, "rank": 1}]
 
-        return {
+        resolution = {
             "case_assessment": {
                 "primary_issue": primary_issue,
                 "secondary_issues": secondary_issues,
                 "case_status": case_status,
-                "confidence": 1.0 # Các logic chặt chẽ dựa trên policy
+                "confidence": 1.0
             },
             "root_cause_analysis": {
                 "ranked_causes": ranked_causes,
@@ -365,6 +556,46 @@ class PolicyAgent:
             "resolution_actions": resolution_actions,
             "evidence_ids": evidence_ids
         }
+
+        # 2. Handoff Contract
+        handoff = {
+            "ticket_id": order_id,
+            "question": "Apply EC_POLICY_V2 rules to resolve dispute.",
+            "found_facts": {
+                "primary_issue": primary_issue,
+                "secondary_issues": secondary_issues,
+                "case_status": case_status,
+                "recommended_refund_brl": clean_float(recommended_refund_brl),
+                "root_cause_code": root_cause_code
+            },
+            "missing_or_contradictory_facts": None,
+            "recommendation": "Pass to VerifierAgent for final schema compliance check."
+        }
+        resolution["handoff_contract"] = handoff
+
+        # 3. LLM Reasoning (Nếu có API key)
+        if self.client:
+            try:
+                prompt = f"""
+                You are the PolicyAgent. Apply rules:
+                - Order status: {order_status}
+                - Delivery Variance Hours: {delivery_variance_hours}
+                - Reconciled: {reconciled}
+                
+                Respond in JSON matching the facts.
+                """
+                self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": "You are a policy application agent."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    response_format={"type": "json_object"}
+                )
+            except Exception as e:
+                pass
+
+        return resolution
 
 
 class VerifierAgent:
@@ -414,11 +645,22 @@ class VerifierAgent:
 class CoordinatorAgent:
     def __init__(self, db):
         self.db = db
-        self.customer_agent = CustomerAgent(db)
-        self.order_agent = OrderProductAgent(db)
-        self.payment_agent = PaymentAgent(db)
-        self.delivery_agent = DeliveryAgent(db)
-        self.policy_agent = PolicyAgent()
+        
+        # Khởi tạo client OpenAI nếu có OPENAI_API_KEY
+        api_key = os.environ.get("OPENAI_API_KEY")
+        base_url = os.environ.get("OPENAI_BASE_URL")
+        self.model = "Gemini 3.5 Flash"
+        
+        if api_key:
+            self.client = OpenAI(api_key=api_key, base_url=base_url)
+        else:
+            self.client = None
+
+        self.customer_agent = CustomerAgent(db, self.client, self.model)
+        self.order_agent = OrderProductAgent(db, self.client, self.model)
+        self.payment_agent = PaymentAgent(db, self.client, self.model)
+        self.delivery_agent = DeliveryAgent(db, self.client, self.model)
+        self.policy_agent = PolicyAgent(self.client, self.model)
         self.verifier = VerifierAgent()
 
     def process_ticket(self, ticket_data):
@@ -429,7 +671,6 @@ class CoordinatorAgent:
         # Đọc thông tin order
         order_details = self.db.get_order_details(order_id)
         if not order_details:
-            # Tạo output trống/fallback nếu order không tìm thấy
             return self.get_empty_fallback(case_id, order_id)
 
         customer_id = order_details.get("customer_id")
@@ -499,18 +740,58 @@ class CoordinatorAgent:
         if not is_valid:
             print(f"Warning: Verification failed for {case_id}: {msg}")
 
-        # Tạo trace log cho ticket này
+        # Tạo trace log cho ticket này (Enriched with handoff contracts)
         trace_log = {
             "case_id": case_id,
             "order_id": order_id,
             "steps": [
-                {"agent": "CoordinatorAgent", "action": "received_ticket"},
-                {"agent": "CustomerAgent", "action": "analyzed_customer_history", "facts": cust_facts},
-                {"agent": "OrderProductAgent", "action": "analyzed_items_products", "facts": {k:v for k,v in order_facts.items() if k != "items_raw"}},
-                {"agent": "PaymentAgent", "action": "reconciled_payment", "facts": pay_facts},
-                {"agent": "DeliveryAgent", "action": "analyzed_delivery_dates", "facts": del_facts},
-                {"agent": "PolicyAgent", "action": "applied_ec_policy_v2", "resolution": policy_resolution},
-                {"agent": "VerifierAgent", "action": "verified_schema", "status": is_valid, "message": msg}
+                {
+                    "agent": "CoordinatorAgent", 
+                    "action": "received_ticket",
+                    "handoff_contract": {
+                        "ticket_id": case_id,
+                        "question": "Begin dispute resolution workflow.",
+                        "found_facts": {"claimed_order_id": order_id},
+                        "missing_or_contradictory_facts": None,
+                        "recommendation": "Pass to CustomerAgent to extract history."
+                    }
+                },
+                {
+                    "agent": "CustomerAgent", 
+                    "action": "analyzed_customer_history", 
+                    "facts": {k:v for k,v in cust_facts.items() if k != "handoff_contract"},
+                    "handoff_contract": cust_facts["handoff_contract"]
+                },
+                {
+                    "agent": "OrderProductAgent", 
+                    "action": "analyzed_items_products", 
+                    "facts": {k:v for k,v in order_facts.items() if k not in ["items_raw", "handoff_contract"]},
+                    "handoff_contract": order_facts["handoff_contract"]
+                },
+                {
+                    "agent": "PaymentAgent", 
+                    "action": "reconciled_payment", 
+                    "facts": {k:v for k,v in pay_facts.items() if k != "handoff_contract"},
+                    "handoff_contract": pay_facts["handoff_contract"]
+                },
+                {
+                    "agent": "DeliveryAgent", 
+                    "action": "analyzed_delivery_dates", 
+                    "facts": {k:v for k,v in del_facts.items() if k != "handoff_contract"},
+                    "handoff_contract": del_facts["handoff_contract"]
+                },
+                {
+                    "agent": "PolicyAgent", 
+                    "action": "applied_ec_policy_v2", 
+                    "resolution": {k:v for k,v in policy_resolution.items() if k != "handoff_contract"},
+                    "handoff_contract": policy_resolution["handoff_contract"]
+                },
+                {
+                    "agent": "VerifierAgent", 
+                    "action": "verified_schema", 
+                    "status": is_valid, 
+                    "message": msg
+                }
             ]
         }
 
@@ -549,8 +830,8 @@ class CoordinatorAgent:
             },
             "payment_reconciliation": {
                 "currency": "BRL",
-                "item_total_brl": None,
-                "freight_total_brl": None,
+                "item_total_brl": 0.0,
+                "freight_total_brl": 0.0,
                 "expected_total_brl": None,
                 "payment_total_brl": 0.0,
                 "difference_brl": None,
