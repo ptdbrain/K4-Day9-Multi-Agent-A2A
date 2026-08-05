@@ -46,7 +46,9 @@ class PaymentAgent(BaseAgent):
             sum(float(row.get("payment_value", 0)) for row in payments), 2
         )
 
-        # If no item rows, expected fields are null (per spec)
+        # [Bùi Thu Trang - Fix Blocker] Xử lý edge case: Nếu order không có mặt hàng nào (item trống).
+        # Theo spec, nếu không có item thì các trường expected_total, difference, reconciled phải là null.
+        # Tránh việc tính toán 0 - 0 = 0 dẫn đến reconciled = True sai logic.
         if not raw_items:
             result = {
                 "currency": "BRL",
@@ -60,14 +62,21 @@ class PaymentAgent(BaseAgent):
                 "reconciled": None,
             }
         else:
+            # [Bùi Thu Trang] Tính tổng giá trị sản phẩm và phí vận chuyển thực tế
             item_total = round(
                 sum(float(row.get("price", 0)) for row in raw_items), 2
             )
             freight_total = round(
                 sum(float(row.get("freight_value", 0)) for row in raw_items), 2
             )
+            # Tổng số tiền mong đợi (expected) = tiền hàng + tiền ship
             expected_total = round(item_total + freight_total, 2)
+            
+            # Tính độ lệch giữa số tiền khách đã thanh toán và số tiền mong đợi
             difference = round(payment_total - expected_total, 2)
+            
+            # [Bùi Thu Trang] Đánh dấu đối soát thành công (reconciled = True) 
+            # nếu độ lệch nằm trong mức sai số cho phép (<= 0.10 BRL)
             reconciled = abs(difference) <= 0.10
 
             result = {

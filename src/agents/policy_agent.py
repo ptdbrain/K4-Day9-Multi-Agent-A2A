@@ -62,6 +62,9 @@ class PolicyAgent(BaseAgent):
 
         # ------------------------------------------------------------------ #
         # PRIMARY ISSUE (evaluated in priority order)
+        # [Bùi Thu Trang] Quyết định kỹ thuật: Sử dụng Rule-based (If-else) 
+        # thay vì LLM để đảm bảo tính deterministic (100% chính xác) và tối ưu tốc độ.
+        # Các rule được áp dụng theo đúng thứ tự ưu tiên của EC_POLICY_V2.
         # ------------------------------------------------------------------ #
         primary_issue: str
         responsible_parties: list[dict]
@@ -69,6 +72,7 @@ class PolicyAgent(BaseAgent):
         primary_action: str
         root_cause_code: str
 
+        # Ưu tiên 1: Đơn hàng bị hủy nhưng đã thanh toán tiền
         if order_status == "canceled" and payment_total > 0:
             primary_issue = "canceled_order_paid"
             responsible_parties = [{"party_type": "platform", "party_id": "OLIST_PLATFORM"}]
@@ -118,6 +122,8 @@ class PolicyAgent(BaseAgent):
 
         # ------------------------------------------------------------------ #
         # SECONDARY ISSUES (in spec order)
+        # [Bùi Thu Trang] Các vấn đề phụ được kiểm tra độc lập và append vào mảng 
+        # theo đúng thứ tự quy định trong spec.
         # ------------------------------------------------------------------ #
         secondary_issues: list[str] = []
         if num_items >= 2:
@@ -138,6 +144,7 @@ class PolicyAgent(BaseAgent):
 
         # ------------------------------------------------------------------ #
         # RESOLUTION ACTIONS (primary + supplemental in spec order)
+        # [Bùi Thu Trang] Logic gán action bổ sung dựa trên chuỗi quy tắc (chain of actions)
         # Per README example: late_delivery_seller →
         #   [refund_freight, review_seller_handoff, verify_payment_allocation]
         #   (no verify_refund_completion for freight refund cases)
