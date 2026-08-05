@@ -43,7 +43,7 @@ def get_variance_hours(dt1, dt2):
 
 
 class CustomerAgent:
-    def __init__(self, db, client=None, model="Gemini 3.5 Flash"):
+    def __init__(self, db, client=None, model="qwen2.5:7b-instruct-q3_K_S"):
         self.db = db
         self.client = client
         self.model = model
@@ -117,7 +117,7 @@ class CustomerAgent:
 
 
 class OrderProductAgent:
-    def __init__(self, db, client=None, model="Gemini 3.5 Flash"):
+    def __init__(self, db, client=None, model="qwen2.5:7b-instruct-q3_K_S"):
         self.db = db
         self.client = client
         self.model = model
@@ -214,7 +214,7 @@ class OrderProductAgent:
 
 
 class PaymentAgent:
-    def __init__(self, db, client=None, model="Gemini 3.5 Flash"):
+    def __init__(self, db, client=None, model="qwen2.5:7b-instruct-q3_K_S"):
         self.db = db
         self.client = client
         self.model = model
@@ -320,7 +320,7 @@ class PaymentAgent:
 
 
 class DeliveryAgent:
-    def __init__(self, db, client=None, model="Gemini 3.5 Flash"):
+    def __init__(self, db, client=None, model="qwen2.5:7b-instruct-q3_K_S"):
         self.db = db
         self.client = client
         self.model = model
@@ -416,7 +416,7 @@ class DeliveryAgent:
 
 
 class PolicyAgent:
-    def __init__(self, client=None, model="Gemini 3.5 Flash"):
+    def __init__(self, client=None, model="qwen2.5:7b-instruct-q3_K_S"):
         self.client = client
         self.model = model
 
@@ -649,7 +649,7 @@ class CoordinatorAgent:
         # Khởi tạo client OpenAI nếu có OPENAI_API_KEY
         api_key = os.environ.get("OPENAI_API_KEY")
         base_url = os.environ.get("OPENAI_BASE_URL")
-        self.model = "Gemini 3.5 Flash"
+        self.model = "qwen2.5:7b-instruct-q3_K_S"
         
         if api_key:
             self.client = OpenAI(api_key=api_key, base_url=base_url)
