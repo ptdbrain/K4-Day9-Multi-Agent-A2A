@@ -511,7 +511,7 @@ class PolicyAgent:
 
         # 1. review_seller_handoff hoặc review_carrier_delay
         if len(late_handoff_seller_ids) > 0:
-            resolution_actions.append("review_seller_delay")
+            resolution_actions.append("review_seller_handoff")
         elif delivery_variance_hours is not None and delivery_variance_hours > 0:
             resolution_actions.append("review_carrier_delay")
 
