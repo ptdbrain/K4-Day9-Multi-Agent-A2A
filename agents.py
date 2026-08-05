@@ -488,7 +488,7 @@ class PolicyAgent:
             primary_issue = "unsupported_late_claim"
             responsible_parties = []
             recommended_refund_brl = 0.0
-            primary_action = "reject_refund"
+            primary_action = "reject_late_refund"
             root_cause_code = "DELIVERY_WITHIN_ESTIMATE"
 
         # Secondary Issues
@@ -539,6 +539,11 @@ class PolicyAgent:
         for rp in responsible_parties:
             if rp["party_type"] == "seller":
                 evidence_ids.append(f"seller:{rp['party_id']}")
+        
+        # Thêm seller evidence cho late_delivery_logistics để làm bằng chứng bàn giao đúng hạn
+        if primary_issue == "late_delivery_logistics":
+            for s_id in order_facts["seller_ids"]:
+                evidence_ids.append(f"seller:{s_id}")
         evidence_ids.append(f"policy:{root_cause_code}")
         
         # Giới hạn 20 evidence IDs
