@@ -480,7 +480,7 @@ class PolicyAgent:
             primary_issue = "valid_split_payment"
             responsible_parties = []
             recommended_refund_brl = 0.0
-            primary_action = "explain_split_payment"
+            primary_action = "explain_valid_split_payment"
             root_cause_code = "MULTIPLE_PAYMENTS_RECONCILED"
 
         # 6. unsupported_late_claim
@@ -488,7 +488,7 @@ class PolicyAgent:
             primary_issue = "unsupported_late_claim"
             responsible_parties = []
             recommended_refund_brl = 0.0
-            primary_action = "reject_late_refund"
+            primary_action = "reject_refund"
             root_cause_code = "DELIVERY_WITHIN_ESTIMATE"
 
         # Secondary Issues
