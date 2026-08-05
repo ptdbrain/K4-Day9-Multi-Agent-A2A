@@ -357,19 +357,21 @@ class DeliveryAgent:
         seller_handoff_analysis = []
         late_handoff_seller_ids = []
 
-        for s_id, s_limit in seller_limits.items():
-            h_var = get_variance_hours(carrier_handoff_at, s_limit)
-            late_handoff = False
-            if h_var is not None and h_var > 0:
-                late_handoff = True
-                late_handoff_seller_ids.append(s_id)
-            
-            seller_handoff_analysis.append({
-                "seller_id": s_id,
-                "shipping_limit_at": format_date(s_limit),
-                "handoff_variance_hours": h_var,
-                "late_handoff": late_handoff
-            })
+        # Chỉ phân tích seller handoff khi có carrier_handoff_at
+        if carrier_handoff_at is not None:
+            for s_id, s_limit in seller_limits.items():
+                h_var = get_variance_hours(carrier_handoff_at, s_limit)
+                late_handoff = False
+                if h_var is not None and h_var > 0:
+                    late_handoff = True
+                    late_handoff_seller_ids.append(s_id)
+                
+                seller_handoff_analysis.append({
+                    "seller_id": s_id,
+                    "shipping_limit_at": format_date(s_limit),
+                    "handoff_variance_hours": h_var,
+                    "late_handoff": late_handoff
+                })
 
         facts = {
             "delivered_at": format_date(delivered_at),
@@ -544,10 +546,6 @@ class PolicyAgent:
         for rp in responsible_parties:
             if rp["party_type"] == "seller":
                 evidence_ids.append(f"seller:{rp['party_id']}")
-        # Với canceled/unavailable orders, thêm seller evidence từ affected entities
-        if primary_issue in ["canceled_order_paid", "unavailable_order_paid"]:
-            for s_id in order_facts["seller_ids"]:
-                evidence_ids.append(f"seller:{s_id}")
         evidence_ids.append(f"policy:{root_cause_code}")
         
         # Giới hạn 20 evidence IDs
