@@ -1,0 +1,9 @@
+{
+  "cohort": "K4",
+  "starter_repo": "https://github.com/ptdbrain/K4-Day9-Multi-Agent-A2A",
+  "policy_version": "EC_POLICY_V2",
+  "model": "Gemini 3.5 Flash",
+  "parameter_size": "under 10B",
+  "framework": "Custom Python Multi-Agent",
+  "runtime": "Python 3.14.6"
+}
