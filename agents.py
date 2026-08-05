@@ -448,7 +448,7 @@ class PolicyAgent:
             primary_issue = "canceled_order_paid"
             responsible_parties = [{"party_type": "platform", "party_id": "OLIST_PLATFORM"}]
             recommended_refund_brl = payment_total_brl
-            primary_action = "issue_full_refund"
+            primary_action = "issue_refund"
             root_cause_code = "ORDER_CANCELED_AFTER_PAYMENT"
 
         # 2. unavailable_order_paid
@@ -456,7 +456,7 @@ class PolicyAgent:
             primary_issue = "unavailable_order_paid"
             responsible_parties = [{"party_type": "platform", "party_id": "OLIST_PLATFORM"}]
             recommended_refund_brl = payment_total_brl
-            primary_action = "issue_full_refund"
+            primary_action = "issue_refund"
             root_cause_code = "ORDER_UNAVAILABLE_AFTER_PAYMENT"
 
         # 3. late_delivery_seller
