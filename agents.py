@@ -470,7 +470,7 @@ class PolicyAgent:
         # 4. late_delivery_logistics
         elif delivery_variance_hours is not None and delivery_variance_hours > 0 and len(late_handoff_seller_ids) == 0:
             primary_issue = "late_delivery_logistics"
-            responsible_parties = [{"party_type": "logistics_provider", "party_id": "LOGISTICS_PROVIDER"}]
+            responsible_parties = [{"party_type": "logistics_provider", "party_id": "logistics_provider"}]
             recommended_refund_brl = pay_facts["freight_total_brl"]
             primary_action = "refund_freight"
             root_cause_code = "CARRIER_DELIVERED_AFTER_ESTIMATE"
