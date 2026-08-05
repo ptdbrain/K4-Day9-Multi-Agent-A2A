@@ -1,0 +1,750 @@
+{"ts": "2026-08-05T08:20:03.494475+00:00", "case_id": "EC_001", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "9b75cdaf2d85857ef023980e15d01546"}}
+{"ts": "2026-08-05T08:20:03.494588+00:00", "case_id": "EC_001", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "9b75cdaf2d85857ef023980e15d01546"}}
+{"ts": "2026-08-05T08:20:03.510781+00:00", "case_id": "EC_001", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "bbf65e7823171a84e70a495dd6c34ceb", "related_count": 1}}
+{"ts": "2026-08-05T08:20:03.510874+00:00", "case_id": "EC_001", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "9b75cdaf2d85857ef023980e15d01546"}}
+{"ts": "2026-08-05T08:20:03.518033+00:00", "case_id": "EC_001", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:03.518108+00:00", "case_id": "EC_001", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "9b75cdaf2d85857ef023980e15d01546"}}
+{"ts": "2026-08-05T08:20:03.520277+00:00", "case_id": "EC_001", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 237.34, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.520332+00:00", "case_id": "EC_001", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "9b75cdaf2d85857ef023980e15d01546"}}
+{"ts": "2026-08-05T08:20:03.523274+00:00", "case_id": "EC_001", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -166.52, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.523351+00:00", "case_id": "EC_001", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "9b75cdaf2d85857ef023980e15d01546"}}
+{"ts": "2026-08-05T08:20:03.523401+00:00", "case_id": "EC_001", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:03.523441+00:00", "case_id": "EC_001", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unsupported_late_claim", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:03.523496+00:00", "case_id": "EC_001", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.523537+00:00", "case_id": "EC_001", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.523564+00:00", "case_id": "EC_001", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:03.524910+00:00", "case_id": "EC_002", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "eb09635680fadffb33358e40b05c9029"}}
+{"ts": "2026-08-05T08:20:03.524955+00:00", "case_id": "EC_002", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "eb09635680fadffb33358e40b05c9029"}}
+{"ts": "2026-08-05T08:20:03.535099+00:00", "case_id": "EC_002", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "ef3b6ab8a1704ead096adbcdee78284b", "related_count": 1}}
+{"ts": "2026-08-05T08:20:03.535215+00:00", "case_id": "EC_002", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "eb09635680fadffb33358e40b05c9029"}}
+{"ts": "2026-08-05T08:20:03.545785+00:00", "case_id": "EC_002", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 1, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:03.545895+00:00", "case_id": "EC_002", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "eb09635680fadffb33358e40b05c9029"}}
+{"ts": "2026-08-05T08:20:03.548771+00:00", "case_id": "EC_002", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 212.27, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.548839+00:00", "case_id": "EC_002", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "eb09635680fadffb33358e40b05c9029"}}
+{"ts": "2026-08-05T08:20:03.551089+00:00", "case_id": "EC_002", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 87.39, "any_seller_late": true}}
+{"ts": "2026-08-05T08:20:03.551216+00:00", "case_id": "EC_002", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "eb09635680fadffb33358e40b05c9029"}}
+{"ts": "2026-08-05T08:20:03.551261+00:00", "case_id": "EC_002", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 18.27}}
+{"ts": "2026-08-05T08:20:03.551289+00:00", "case_id": "EC_002", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_seller", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:03.551335+00:00", "case_id": "EC_002", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.551363+00:00", "case_id": "EC_002", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.551380+00:00", "case_id": "EC_002", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.552522+00:00", "case_id": "EC_003", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "6c1798a95735e69db81fe92f8c40bdb4"}}
+{"ts": "2026-08-05T08:20:03.552568+00:00", "case_id": "EC_003", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "6c1798a95735e69db81fe92f8c40bdb4"}}
+{"ts": "2026-08-05T08:20:03.562277+00:00", "case_id": "EC_003", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "02168ea18740a0fdaaa15f11bebba5db", "related_count": 1}}
+{"ts": "2026-08-05T08:20:03.562359+00:00", "case_id": "EC_003", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "6c1798a95735e69db81fe92f8c40bdb4"}}
+{"ts": "2026-08-05T08:20:03.567985+00:00", "case_id": "EC_003", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:03.568102+00:00", "case_id": "EC_003", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "6c1798a95735e69db81fe92f8c40bdb4"}}
+{"ts": "2026-08-05T08:20:03.570861+00:00", "case_id": "EC_003", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 132.02, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.570924+00:00", "case_id": "EC_003", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "6c1798a95735e69db81fe92f8c40bdb4"}}
+{"ts": "2026-08-05T08:20:03.573621+00:00", "case_id": "EC_003", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 210.5, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.573681+00:00", "case_id": "EC_003", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "6c1798a95735e69db81fe92f8c40bdb4"}}
+{"ts": "2026-08-05T08:20:03.573712+00:00", "case_id": "EC_003", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required", "refund_brl": 32.22}}
+{"ts": "2026-08-05T08:20:03.573737+00:00", "case_id": "EC_003", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_logistics", "confidence": 0.9}}
+{"ts": "2026-08-05T08:20:03.573769+00:00", "case_id": "EC_003", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.573806+00:00", "case_id": "EC_003", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.573823+00:00", "case_id": "EC_003", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.575179+00:00", "case_id": "EC_004", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "5d9c5817e278892b7498d90bfa28ade8"}}
+{"ts": "2026-08-05T08:20:03.575227+00:00", "case_id": "EC_004", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "5d9c5817e278892b7498d90bfa28ade8"}}
+{"ts": "2026-08-05T08:20:03.584777+00:00", "case_id": "EC_004", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "67a7e94ec59ef6d6ba83942c81d39b9a", "related_count": 0}}
+{"ts": "2026-08-05T08:20:03.584871+00:00", "case_id": "EC_004", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "5d9c5817e278892b7498d90bfa28ade8"}}
+{"ts": "2026-08-05T08:20:03.591005+00:00", "case_id": "EC_004", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "canceled", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:03.591083+00:00", "case_id": "EC_004", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "5d9c5817e278892b7498d90bfa28ade8"}}
+{"ts": "2026-08-05T08:20:03.593201+00:00", "case_id": "EC_004", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 290.16, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.593256+00:00", "case_id": "EC_004", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "5d9c5817e278892b7498d90bfa28ade8"}}
+{"ts": "2026-08-05T08:20:03.595249+00:00", "case_id": "EC_004", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.595301+00:00", "case_id": "EC_004", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "5d9c5817e278892b7498d90bfa28ade8"}}
+{"ts": "2026-08-05T08:20:03.595333+00:00", "case_id": "EC_004", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required", "refund_brl": 290.16}}
+{"ts": "2026-08-05T08:20:03.595358+00:00", "case_id": "EC_004", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "canceled_order_paid", "confidence": 0.86}}
+{"ts": "2026-08-05T08:20:03.595389+00:00", "case_id": "EC_004", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.595415+00:00", "case_id": "EC_004", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.595431+00:00", "case_id": "EC_004", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.597108+00:00", "case_id": "EC_005", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "3a20bcc250e5404ca717dfa90e8a9c05"}}
+{"ts": "2026-08-05T08:20:03.597217+00:00", "case_id": "EC_005", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "3a20bcc250e5404ca717dfa90e8a9c05"}}
+{"ts": "2026-08-05T08:20:03.606821+00:00", "case_id": "EC_005", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "e779db0c222c66daea0527e24c4a05e1", "related_count": 0}}
+{"ts": "2026-08-05T08:20:03.606907+00:00", "case_id": "EC_005", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "3a20bcc250e5404ca717dfa90e8a9c05"}}
+{"ts": "2026-08-05T08:20:03.613925+00:00", "case_id": "EC_005", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:03.614001+00:00", "case_id": "EC_005", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "3a20bcc250e5404ca717dfa90e8a9c05"}}
+{"ts": "2026-08-05T08:20:03.616439+00:00", "case_id": "EC_005", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 465.0, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.616505+00:00", "case_id": "EC_005", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "3a20bcc250e5404ca717dfa90e8a9c05"}}
+{"ts": "2026-08-05T08:20:03.618644+00:00", "case_id": "EC_005", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 118.42, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.618704+00:00", "case_id": "EC_005", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "3a20bcc250e5404ca717dfa90e8a9c05"}}
+{"ts": "2026-08-05T08:20:03.618736+00:00", "case_id": "EC_005", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required", "refund_brl": 32.75}}
+{"ts": "2026-08-05T08:20:03.618768+00:00", "case_id": "EC_005", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_logistics", "confidence": 0.9}}
+{"ts": "2026-08-05T08:20:03.618801+00:00", "case_id": "EC_005", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.618827+00:00", "case_id": "EC_005", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.618843+00:00", "case_id": "EC_005", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.620005+00:00", "case_id": "EC_006", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "0e4a4de1d15b6df8d4335fb2db61667a"}}
+{"ts": "2026-08-05T08:20:03.620048+00:00", "case_id": "EC_006", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "0e4a4de1d15b6df8d4335fb2db61667a"}}
+{"ts": "2026-08-05T08:20:03.629308+00:00", "case_id": "EC_006", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "85189d642c11e7090cb2f72fed68ea42", "related_count": 1}}
+{"ts": "2026-08-05T08:20:03.629392+00:00", "case_id": "EC_006", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "0e4a4de1d15b6df8d4335fb2db61667a"}}
+{"ts": "2026-08-05T08:20:03.636872+00:00", "case_id": "EC_006", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 4, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:03.636985+00:00", "case_id": "EC_006", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "0e4a4de1d15b6df8d4335fb2db61667a"}}
+{"ts": "2026-08-05T08:20:03.639223+00:00", "case_id": "EC_006", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 154.32, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.639281+00:00", "case_id": "EC_006", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "0e4a4de1d15b6df8d4335fb2db61667a"}}
+{"ts": "2026-08-05T08:20:03.641535+00:00", "case_id": "EC_006", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 141.48, "any_seller_late": true}}
+{"ts": "2026-08-05T08:20:03.641590+00:00", "case_id": "EC_006", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "0e4a4de1d15b6df8d4335fb2db61667a"}}
+{"ts": "2026-08-05T08:20:03.641622+00:00", "case_id": "EC_006", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 60.4}}
+{"ts": "2026-08-05T08:20:03.641645+00:00", "case_id": "EC_006", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_seller", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:03.641675+00:00", "case_id": "EC_006", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.641700+00:00", "case_id": "EC_006", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.641715+00:00", "case_id": "EC_006", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.642863+00:00", "case_id": "EC_007", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "cf788ee4258fde5130bb5651bda63918"}}
+{"ts": "2026-08-05T08:20:03.642912+00:00", "case_id": "EC_007", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "cf788ee4258fde5130bb5651bda63918"}}
+{"ts": "2026-08-05T08:20:03.652601+00:00", "case_id": "EC_007", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "030b3bb8818a752ca223944036bad5d7", "related_count": 0}}
+{"ts": "2026-08-05T08:20:03.652686+00:00", "case_id": "EC_007", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "cf788ee4258fde5130bb5651bda63918"}}
+{"ts": "2026-08-05T08:20:03.660202+00:00", "case_id": "EC_007", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:03.660334+00:00", "case_id": "EC_007", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "cf788ee4258fde5130bb5651bda63918"}}
+{"ts": "2026-08-05T08:20:03.662654+00:00", "case_id": "EC_007", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 223.93, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.662708+00:00", "case_id": "EC_007", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "cf788ee4258fde5130bb5651bda63918"}}
+{"ts": "2026-08-05T08:20:03.664875+00:00", "case_id": "EC_007", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 94.42, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.664933+00:00", "case_id": "EC_007", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "cf788ee4258fde5130bb5651bda63918"}}
+{"ts": "2026-08-05T08:20:03.664964+00:00", "case_id": "EC_007", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required", "refund_brl": 44.13}}
+{"ts": "2026-08-05T08:20:03.664988+00:00", "case_id": "EC_007", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_logistics", "confidence": 0.9}}
+{"ts": "2026-08-05T08:20:03.665029+00:00", "case_id": "EC_007", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.665055+00:00", "case_id": "EC_007", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.665071+00:00", "case_id": "EC_007", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.666239+00:00", "case_id": "EC_008", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "23c312ca9f0242a48a95e5643bee2645"}}
+{"ts": "2026-08-05T08:20:03.666284+00:00", "case_id": "EC_008", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "23c312ca9f0242a48a95e5643bee2645"}}
+{"ts": "2026-08-05T08:20:03.675479+00:00", "case_id": "EC_008", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "fd16ef833c280c8e679d5025535a32e7", "related_count": 0}}
+{"ts": "2026-08-05T08:20:03.675567+00:00", "case_id": "EC_008", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "23c312ca9f0242a48a95e5643bee2645"}}
+{"ts": "2026-08-05T08:20:03.684586+00:00", "case_id": "EC_008", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:03.724058+00:00", "case_id": "EC_008", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "23c312ca9f0242a48a95e5643bee2645"}}
+{"ts": "2026-08-05T08:20:03.727394+00:00", "case_id": "EC_008", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 170.73, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.727473+00:00", "case_id": "EC_008", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "23c312ca9f0242a48a95e5643bee2645"}}
+{"ts": "2026-08-05T08:20:03.729953+00:00", "case_id": "EC_008", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -73.73, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.730019+00:00", "case_id": "EC_008", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "23c312ca9f0242a48a95e5643bee2645"}}
+{"ts": "2026-08-05T08:20:03.730051+00:00", "case_id": "EC_008", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:03.730076+00:00", "case_id": "EC_008", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "valid_split_payment", "confidence": 0.93}}
+{"ts": "2026-08-05T08:20:03.730109+00:00", "case_id": "EC_008", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.730136+00:00", "case_id": "EC_008", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.730153+00:00", "case_id": "EC_008", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:03.731977+00:00", "case_id": "EC_009", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "6683aa4f73f7869ec65ebeeef53f700b"}}
+{"ts": "2026-08-05T08:20:03.732042+00:00", "case_id": "EC_009", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "6683aa4f73f7869ec65ebeeef53f700b"}}
+{"ts": "2026-08-05T08:20:03.742023+00:00", "case_id": "EC_009", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "7e2ae24e734d02f10866ccab9c7ad0c8", "related_count": 0}}
+{"ts": "2026-08-05T08:20:03.742142+00:00", "case_id": "EC_009", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "6683aa4f73f7869ec65ebeeef53f700b"}}
+{"ts": "2026-08-05T08:20:03.750293+00:00", "case_id": "EC_009", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "canceled", "num_items": 5, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:03.750406+00:00", "case_id": "EC_009", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "6683aa4f73f7869ec65ebeeef53f700b"}}
+{"ts": "2026-08-05T08:20:03.752849+00:00", "case_id": "EC_009", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 144.3, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.752942+00:00", "case_id": "EC_009", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "6683aa4f73f7869ec65ebeeef53f700b"}}
+{"ts": "2026-08-05T08:20:03.755088+00:00", "case_id": "EC_009", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.755155+00:00", "case_id": "EC_009", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "6683aa4f73f7869ec65ebeeef53f700b"}}
+{"ts": "2026-08-05T08:20:03.755196+00:00", "case_id": "EC_009", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required", "refund_brl": 144.3}}
+{"ts": "2026-08-05T08:20:03.755229+00:00", "case_id": "EC_009", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "canceled_order_paid", "confidence": 0.86}}
+{"ts": "2026-08-05T08:20:03.755278+00:00", "case_id": "EC_009", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.755311+00:00", "case_id": "EC_009", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.755328+00:00", "case_id": "EC_009", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.757432+00:00", "case_id": "EC_010", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "919baca007d9525b6668c18f79a33197"}}
+{"ts": "2026-08-05T08:20:03.757497+00:00", "case_id": "EC_010", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "919baca007d9525b6668c18f79a33197"}}
+{"ts": "2026-08-05T08:20:03.767617+00:00", "case_id": "EC_010", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "26a2b0baec2ef2e226f1297de4b6a86f", "related_count": 0}}
+{"ts": "2026-08-05T08:20:03.767729+00:00", "case_id": "EC_010", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "919baca007d9525b6668c18f79a33197"}}
+{"ts": "2026-08-05T08:20:03.775587+00:00", "case_id": "EC_010", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:03.775686+00:00", "case_id": "EC_010", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "919baca007d9525b6668c18f79a33197"}}
+{"ts": "2026-08-05T08:20:03.777831+00:00", "case_id": "EC_010", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 381.63, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.777889+00:00", "case_id": "EC_010", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "919baca007d9525b6668c18f79a33197"}}
+{"ts": "2026-08-05T08:20:03.780074+00:00", "case_id": "EC_010", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -587.95, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.780136+00:00", "case_id": "EC_010", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "919baca007d9525b6668c18f79a33197"}}
+{"ts": "2026-08-05T08:20:03.780166+00:00", "case_id": "EC_010", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:03.780190+00:00", "case_id": "EC_010", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "valid_split_payment", "confidence": 0.93}}
+{"ts": "2026-08-05T08:20:03.780223+00:00", "case_id": "EC_010", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.780256+00:00", "case_id": "EC_010", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.780272+00:00", "case_id": "EC_010", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:03.781613+00:00", "case_id": "EC_011", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "113e41a438f06ffae6d1857e01d60c45"}}
+{"ts": "2026-08-05T08:20:03.781672+00:00", "case_id": "EC_011", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "113e41a438f06ffae6d1857e01d60c45"}}
+{"ts": "2026-08-05T08:20:03.792091+00:00", "case_id": "EC_011", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "1871aa277cbcefacecbf979fb6888b7f", "related_count": 0}}
+{"ts": "2026-08-05T08:20:03.792211+00:00", "case_id": "EC_011", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "113e41a438f06ffae6d1857e01d60c45"}}
+{"ts": "2026-08-05T08:20:03.798958+00:00", "case_id": "EC_011", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "canceled", "num_items": 4, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:03.799093+00:00", "case_id": "EC_011", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "113e41a438f06ffae6d1857e01d60c45"}}
+{"ts": "2026-08-05T08:20:03.803947+00:00", "case_id": "EC_011", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 127.12, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.804103+00:00", "case_id": "EC_011", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "113e41a438f06ffae6d1857e01d60c45"}}
+{"ts": "2026-08-05T08:20:03.812049+00:00", "case_id": "EC_011", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.812158+00:00", "case_id": "EC_011", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "113e41a438f06ffae6d1857e01d60c45"}}
+{"ts": "2026-08-05T08:20:03.812198+00:00", "case_id": "EC_011", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required", "refund_brl": 127.12}}
+{"ts": "2026-08-05T08:20:03.812225+00:00", "case_id": "EC_011", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "canceled_order_paid", "confidence": 0.86}}
+{"ts": "2026-08-05T08:20:03.812272+00:00", "case_id": "EC_011", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.812303+00:00", "case_id": "EC_011", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.812320+00:00", "case_id": "EC_011", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.813688+00:00", "case_id": "EC_012", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "73628c6d02ed8f6134d9752cd7b83c2a"}}
+{"ts": "2026-08-05T08:20:03.813740+00:00", "case_id": "EC_012", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "73628c6d02ed8f6134d9752cd7b83c2a"}}
+{"ts": "2026-08-05T08:20:03.825589+00:00", "case_id": "EC_012", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "0a5fab743da859b3f10a409bbb132a5a", "related_count": 1}}
+{"ts": "2026-08-05T08:20:03.825715+00:00", "case_id": "EC_012", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "73628c6d02ed8f6134d9752cd7b83c2a"}}
+{"ts": "2026-08-05T08:20:03.830344+00:00", "case_id": "EC_012", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "unavailable", "num_items": 0, "num_sellers": 0}}
+{"ts": "2026-08-05T08:20:03.830434+00:00", "case_id": "EC_012", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "73628c6d02ed8f6134d9752cd7b83c2a"}}
+{"ts": "2026-08-05T08:20:03.832648+00:00", "case_id": "EC_012", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 226.23, "reconciled": null}}
+{"ts": "2026-08-05T08:20:03.832714+00:00", "case_id": "EC_012", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "73628c6d02ed8f6134d9752cd7b83c2a"}}
+{"ts": "2026-08-05T08:20:03.834825+00:00", "case_id": "EC_012", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.834950+00:00", "case_id": "EC_012", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "73628c6d02ed8f6134d9752cd7b83c2a"}}
+{"ts": "2026-08-05T08:20:03.835105+00:00", "case_id": "EC_012", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required", "refund_brl": 226.23}}
+{"ts": "2026-08-05T08:20:03.835208+00:00", "case_id": "EC_012", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unavailable_order_paid", "confidence": 0.81}}
+{"ts": "2026-08-05T08:20:03.835291+00:00", "case_id": "EC_012", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.835354+00:00", "case_id": "EC_012", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.835389+00:00", "case_id": "EC_012", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.837393+00:00", "case_id": "EC_013", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "97e8d3eb8f48e3610beed991e5f32296"}}
+{"ts": "2026-08-05T08:20:03.837460+00:00", "case_id": "EC_013", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "97e8d3eb8f48e3610beed991e5f32296"}}
+{"ts": "2026-08-05T08:20:03.851229+00:00", "case_id": "EC_013", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "f5610aa200397a8c90286f86601388aa", "related_count": 0}}
+{"ts": "2026-08-05T08:20:03.851530+00:00", "case_id": "EC_013", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "97e8d3eb8f48e3610beed991e5f32296"}}
+{"ts": "2026-08-05T08:20:03.863709+00:00", "case_id": "EC_013", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:03.863827+00:00", "case_id": "EC_013", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "97e8d3eb8f48e3610beed991e5f32296"}}
+{"ts": "2026-08-05T08:20:03.867082+00:00", "case_id": "EC_013", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 237.84, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.867211+00:00", "case_id": "EC_013", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "97e8d3eb8f48e3610beed991e5f32296"}}
+{"ts": "2026-08-05T08:20:03.870652+00:00", "case_id": "EC_013", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 115.29, "any_seller_late": true}}
+{"ts": "2026-08-05T08:20:03.870741+00:00", "case_id": "EC_013", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "97e8d3eb8f48e3610beed991e5f32296"}}
+{"ts": "2026-08-05T08:20:03.870779+00:00", "case_id": "EC_013", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 48.14}}
+{"ts": "2026-08-05T08:20:03.870911+00:00", "case_id": "EC_013", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_seller", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:03.870960+00:00", "case_id": "EC_013", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:03.870992+00:00", "case_id": "EC_013", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:03.871009+00:00", "case_id": "EC_013", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:03.872395+00:00", "case_id": "EC_014", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "f938fa004452c776198a593e5fb9056d"}}
+{"ts": "2026-08-05T08:20:03.872453+00:00", "case_id": "EC_014", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "f938fa004452c776198a593e5fb9056d"}}
+{"ts": "2026-08-05T08:20:03.884065+00:00", "case_id": "EC_014", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "b08b68bac767c3269e827f822d308182", "related_count": 1}}
+{"ts": "2026-08-05T08:20:03.884196+00:00", "case_id": "EC_014", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "f938fa004452c776198a593e5fb9056d"}}
+{"ts": "2026-08-05T08:20:03.891274+00:00", "case_id": "EC_014", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 3, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:03.891399+00:00", "case_id": "EC_014", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "f938fa004452c776198a593e5fb9056d"}}
+{"ts": "2026-08-05T08:20:03.894093+00:00", "case_id": "EC_014", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 108.84, "reconciled": true}}
+{"ts": "2026-08-05T08:20:03.894169+00:00", "case_id": "EC_014", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "f938fa004452c776198a593e5fb9056d"}}
+{"ts": "2026-08-05T08:20:03.897571+00:00", "case_id": "EC_014", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 371.97, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:03.897652+00:00", "case_id": "EC_014", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "f938fa004452c776198a593e5fb9056d"}}
+{"ts": "2026-08-05T08:20:03.897703+00:00", "case_id": "EC_014", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "ca{"ts": "2026-08-05T08:21:02.978711+00:00", "case_id": "EC_014", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:21:02.978862+00:00", "case_id": "EC_014", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:21:02.978916+00:00", "case_id": "EC_014", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:21:02.978942+00:00", "case_id": "EC_014", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:21:02.980360+00:00", "case_id": "EC_015", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "ccec592b58e122dc2bfc2305152d9603"}}
+{"ts": "2026-08-05T08:21:02.980404+00:00", "case_id": "EC_015", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "ccec592b58e122dc2bfc2305152d9603"}}
+{"ts": "2026-08-05T08:21:02.991954+00:00", "case_id": "EC_015", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "61b4260aa3892f7f714ba862cd42fd0e", "related_count": 0}}
+{"ts": "2026-08-05T08:21:02.992087+00:00", "case_id": "EC_015", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "ccec592b58e122dc2bfc2305152d9603"}}
+{"ts": "2026-08-05T08:21:03.000121+00:00", "case_id": "EC_015", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:21:03.000271+00:00", "case_id": "EC_015", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "ccec592b58e122dc2bfc2305152d9603"}}
+{"ts": "2026-08-05T08:21:03.003252+00:00", "case_id": "EC_015", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 211.58, "reconciled": true}}
+{"ts": "2026-08-05T08:21:03.003346+00:00", "case_id": "EC_015", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "ccec592b58e122dc2bfc2305152d9603"}}
+{"ts": "2026-08-05T08:21:03.006171+00:00", "case_id": "EC_015", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -365.46, "any_seller_late": false}}
+{"ts": "2026-08-05T08:21:03.006262+00:00", "case_id": "EC_015", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "ccec592b58e122dc2bfc2305152d9603"}}
+{"ts": "2026-08-05T08:21:03.006296+00:00", "case_id": "EC_015", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:21:36.064046+00:00", "case_id": "EC_015", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:21:36.064224+00:00", "case_id": "EC_015", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:21:36.064275+00:00", "case_id": "EC_015", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:21:36.064297+00:00", "case_id": "EC_015", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:21:36.066396+00:00", "case_id": "EC_016", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "9c9353e8fd52f68f8442e580b5f2bba6"}}
+{"ts": "2026-08-05T08:21:36.066462+00:00", "case_id": "EC_016", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "9c9353e8fd52f68f8442e580b5f2bba6"}}
+{"ts": "2026-08-05T08:21:36.084541+00:00", "case_id": "EC_016", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "7b08fc11e1aacd85ef2845c12a9ddb81", "related_count": 1}}
+{"ts": "2026-08-05T08:21:36.084683+00:00", "case_id": "EC_016", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "9c9353e8fd52f68f8442e580b5f2bba6"}}
+{"ts": "2026-08-05T08:21:36.094531+00:00", "case_id": "EC_016", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 1, "num_sellers": 1}}
+{"ts": "2026-08-05T08:21:36.094687+00:00", "case_id": "EC_016", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "9c9353e8fd52f68f8442e580b5f2bba6"}}
+{"ts": "2026-08-05T08:21:36.098938+00:00", "case_id": "EC_016", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 147.15, "reconciled": true}}
+{"ts": "2026-08-05T08:21:36.099063+00:00", "case_id": "EC_016", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "9c9353e8fd52f68f8442e580b5f2bba6"}}
+{"ts": "2026-08-05T08:21:36.102641+00:00", "case_id": "EC_016", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 67.65, "any_seller_late": false}}
+{"ts": "2026-08-05T08:21:36.102742+00:00", "case_id": "EC_016", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "9c9353e8fd52f68f8442e580b5f2bba6"}}
+{"ts": "2026-08-05T08:21:36.102794+00:00", "case_id": "EC_016", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required", "refund_brl": 18.15}}
+{"ts": "2026-08-05T08:21:48.653894+00:00", "case_id": "EC_016", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:21:48.654097+00:00", "case_id": "EC_016", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:21:48.654155+00:00", "case_id": "EC_016", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:21:48.654185+00:00", "case_id": "EC_016", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:21:48.656361+00:00", "case_id": "EC_017", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "3c5939ce763419f5942f27acffd072e6"}}
+{"ts": "2026-08-05T08:21:48.656434+00:00", "case_id": "EC_017", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "3c5939ce763419f5942f27acffd072e6"}}
+{"ts": "2026-08-05T08:21:48.670780+00:00", "case_id": "EC_017", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "3d50a44231c2a153219cef76ee3e445d", "related_count": 1}}
+{"ts": "2026-08-05T08:21:48.670905+00:00", "case_id": "EC_017", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "3c5939ce763419f5942f27acffd072e6"}}
+{"ts": "2026-08-05T08:21:48.680194+00:00", "case_id": "EC_017", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 3, "num_sellers": 1}}
+{"ts": "2026-08-05T08:21:48.680329+00:00", "case_id": "EC_017", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "3c5939ce763419f5942f27acffd072e6"}}
+{"ts": "2026-08-05T08:21:48.683225+00:00", "case_id": "EC_017", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 227.22, "reconciled": true}}
+{"ts": "2026-08-05T08:21:48.683310+00:00", "case_id": "EC_017", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "3c5939ce763419f5942f27acffd072e6"}}
+{"ts": "2026-08-05T08:21:48.686205+00:00", "case_id": "EC_017", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 547.94, "any_seller_late": false}}
+{"ts": "2026-08-05T08:21:48.686281+00:00", "case_id": "EC_017", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "3c5939ce763419f5942f27acffd072e6"}}
+{"ts": "2026-08-05T08:21:48.686319+00:00", "case_id": "EC_017", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required", "refund_brl": 48.54}}
+{"ts": "2026-08-05T08:22:39.716027+00:00", "case_id": "EC_017", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:22:39.716172+00:00", "case_id": "EC_017", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:22:39.716207+00:00", "case_id": "EC_017", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:22:39.716226+00:00", "case_id": "EC_017", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:22:39.717800+00:00", "case_id": "EC_018", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "f396e1280028fa9c8c83111abee5f2e9"}}
+{"ts": "2026-08-05T08:22:39.717847+00:00", "case_id": "EC_018", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "f396e1280028fa9c8c83111abee5f2e9"}}
+{"ts": "2026-08-05T08:22:39.730958+00:00", "case_id": "EC_018", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "664770508f06c0c2fa1c37fed04a6dd7", "related_count": 0}}
+{"ts": "2026-08-05T08:22:39.731110+00:00", "case_id": "EC_018", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "f396e1280028fa9c8c83111abee5f2e9"}}
+{"ts": "2026-08-05T08:22:39.740774+00:00", "case_id": "EC_018", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:22:39.740896+00:00", "case_id": "EC_018", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "f396e1280028fa9c8c83111abee5f2e9"}}
+{"ts": "2026-08-05T08:22:39.744518+00:00", "case_id": "EC_018", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 455.38, "reconciled": true}}
+{"ts": "2026-08-05T08:22:39.744637+00:00", "case_id": "EC_018", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "f396e1280028fa9c8c83111abee5f2e9"}}
+{"ts": "2026-08-05T08:22:39.750114+00:00", "case_id": "EC_018", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -344.15, "any_seller_late": false}}
+{"ts": "2026-08-05T08:22:39.750388+00:00", "case_id": "EC_018", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "f396e1280028fa9c8c83111abee5f2e9"}}
+{"ts": "2026-08-05T08:22:39.750441+00:00", "case_id": "EC_018", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:22:53.903641+00:00", "case_id": "EC_018", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:22:53.903797+00:00", "case_id": "EC_018", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:22:53.903834+00:00", "case_id": "EC_018", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:22:53.903853+00:00", "case_id": "EC_018", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:22:53.905500+00:00", "case_id": "EC_019", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "a4e90af1c84c4455c7c4c65293ae2c78"}}
+{"ts": "2026-08-05T08:22:53.905556+00:00", "case_id": "EC_019", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "a4e90af1c84c4455c7c4c65293ae2c78"}}
+{"ts": "2026-08-05T08:22:53.917366+00:00", "case_id": "EC_019", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "e3301490c373db9263c15a73172d0c6f", "related_count": 2}}
+{"ts": "2026-08-05T08:22:53.917474+00:00", "case_id": "EC_019", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "a4e90af1c84c4455c7c4c65293ae2c78"}}
+{"ts": "2026-08-05T08:22:53.924520+00:00", "case_id": "EC_019", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:22:53.924626+00:00", "case_id": "EC_019", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "a4e90af1c84c4455c7c4c65293ae2c78"}}
+{"ts": "2026-08-05T08:22:53.927264+00:00", "case_id": "EC_019", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 121.28, "reconciled": true}}
+{"ts": "2026-08-05T08:22:53.927359+00:00", "case_id": "EC_019", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "a4e90af1c84c4455c7c4c65293ae2c78"}}
+{"ts": "2026-08-05T08:22:53.930018+00:00", "case_id": "EC_019", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 303.43, "any_seller_late": true}}
+{"ts": "2026-08-05T08:22:53.930085+00:00", "case_id": "EC_019", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "a4e90af1c84c4455c7c4c65293ae2c78"}}
+{"ts": "2026-08-05T08:22:53.930121+00:00", "case_id": "EC_019", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 23.48}}
+{"ts": "2026-08-05T08:23:29.788211+00:00", "case_id": "EC_019", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:23:29.788376+00:00", "case_id": "EC_019", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:23:29.788416+00:00", "case_id": "EC_019", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:23:29.788438+00:00", "case_id": "EC_019", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:23:29.790339+00:00", "case_id": "EC_020", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "4f3f48cbedce0c316c688af6fc7e9c56"}}
+{"ts": "2026-08-05T08:23:29.790405+00:00", "case_id": "EC_020", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "4f3f48cbedce0c316c688af6fc7e9c56"}}
+{"ts": "2026-08-05T08:23:29.802278+00:00", "case_id": "EC_020", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "0dc81b520ef7db9cb44bb075e129dcf8", "related_count": 1}}
+{"ts": "2026-08-05T08:23:29.802440+00:00", "case_id": "EC_020", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "4f3f48cbedce0c316c688af6fc7e9c56"}}
+{"ts": "2026-08-05T08:23:29.812212+00:00", "case_id": "EC_020", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 3, "num_sellers": 1}}
+{"ts": "2026-08-05T08:23:29.812380+00:00", "case_id": "EC_020", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "4f3f48cbedce0c316c688af6fc7e9c56"}}
+{"ts": "2026-08-05T08:23:29.817378+00:00", "case_id": "EC_020", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 308.61, "reconciled": true}}
+{"ts": "2026-08-05T08:23:29.817467+00:00", "case_id": "EC_020", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "4f3f48cbedce0c316c688af6fc7e9c56"}}
+{"ts": "2026-08-05T08:23:29.822050+00:00", "case_id": "EC_020", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 234.76, "any_seller_late": true}}
+{"ts": "2026-08-05T08:23:29.822209+00:00", "case_id": "EC_020", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "4f3f48cbedce0c316c688af6fc7e9c56"}}
+{"ts": "2026-08-05T08:23:29.822285+00:00", "case_id": "EC_020", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 68.64}}
+{"ts": "2026-08-05T08:23:42.757057+00:00", "case_id": "EC_020", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:23:42.757214+00:00", "case_id": "EC_020", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:23:42.757251+00:00", "case_id": "EC_020", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:23:42.757270+00:00", "case_id": "EC_020", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:23:42.759065+00:00", "case_id": "EC_021", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "cc8778d76e567b45082b7f52bce23095"}}
+{"ts": "2026-08-05T08:23:42.759139+00:00", "case_id": "EC_021", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "cc8778d76e567b45082b7f52bce23095"}}
+{"ts": "2026-08-05T08:23:42.772926+00:00", "case_id": "EC_021", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "636b413d6b339d4687d7f18f9d89b2f6", "related_count": 0}}
+{"ts": "2026-08-05T08:23:42.773090+00:00", "case_id": "EC_021", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "cc8778d76e567b45082b7f52bce23095"}}
+{"ts": "2026-08-05T08:23:42.784008+00:00", "case_id": "EC_021", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:23:42.784131+00:00", "case_id": "EC_021", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "cc8778d76e567b45082b7f52bce23095"}}
+{"ts": "2026-08-05T08:23:42.786842+00:00", "case_id": "EC_021", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 165.59, "reconciled": true}}
+{"ts": "2026-08-05T08:23:42.786951+00:00", "case_id": "EC_021", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "cc8778d76e567b45082b7f52bce23095"}}
+{"ts": "2026-08-05T08:23:42.789688+00:00", "case_id": "EC_021", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -673.72, "any_seller_late": false}}
+{"ts": "2026-08-05T08:23:42.789772+00:00", "case_id": "EC_021", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "cc8778d76e567b45082b7f52bce23095"}}
+{"ts": "2026-08-05T08:23:42.789813+00:00", "case_id": "EC_021", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:23:47.500795+00:00", "case_id": "EC_021", "agent": "CoordinatorAgent", "step": "llm_confidence", "model": "qwen/qwen3.5-9b", "data": {"raw": "1.00", "parsed": 1.0}}
+{"ts": "2026-08-05T08:23:47.500931+00:00", "case_id": "EC_021", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:23:47.500966+00:00", "case_id": "EC_021", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:23:47.500984+00:00", "case_id": "EC_021", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:23:47.502578+00:00", "case_id": "EC_022", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "ca0400dec2c292340c373e63b1c2c597"}}
+{"ts": "2026-08-05T08:23:47.502643+00:00", "case_id": "EC_022", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "ca0400dec2c292340c373e63b1c2c597"}}
+{"ts": "2026-08-05T08:23:47.514398+00:00", "case_id": "EC_022", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "0aadc1d26d1c8b88a52c39a533ccea93", "related_count": 1}}
+{"ts": "2026-08-05T08:23:47.514520+00:00", "case_id": "EC_022", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "ca0400dec2c292340c373e63b1c2c597"}}
+{"ts": "2026-08-05T08:23:47.522515+00:00", "case_id": "EC_022", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 4, "num_sellers": 1}}
+{"ts": "2026-08-05T08:23:47.522650+00:00", "case_id": "EC_022", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "ca0400dec2c292340c373e63b1c2c597"}}
+{"ts": "2026-08-05T08:23:47.525936+00:00", "case_id": "EC_022", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 757.68, "reconciled": true}}
+{"ts": "2026-08-05T08:23:47.526034+00:00", "case_id": "EC_022", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "ca0400dec2c292340c373e63b1c2c597"}}
+{"ts": "2026-08-05T08:23:47.528650+00:00", "case_id": "EC_022", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -30.63, "any_seller_late": false}}
+{"ts": "2026-08-05T08:23:47.528744+00:00", "case_id": "EC_022", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "ca0400dec2c292340c373e63b1c2c597"}}
+{"ts": "2026-08-05T08:23:47.528786+00:00", "case_id": "EC_022", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:24:06.701437+00:00", "case_id": "EC_022", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:24:06.701601+00:00", "case_id": "EC_022", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:24:06.701664+00:00", "case_id": "EC_022", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:24:06.701687+00:00", "case_id": "EC_022", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:24:06.703526+00:00", "case_id": "EC_023", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "9d0516ad96d793d308cec3c5929ed649"}}
+{"ts": "2026-08-05T08:24:06.703589+00:00", "case_id": "EC_023", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "9d0516ad96d793d308cec3c5929ed649"}}
+{"ts": "2026-08-05T08:24:06.720595+00:00", "case_id": "EC_023", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "e11a1b428e150830944b665cb6b2d5da", "related_count": 1}}
+{"ts": "2026-08-05T08:24:06.720779+00:00", "case_id": "EC_023", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "9d0516ad96d793d308cec3c5929ed649"}}
+{"ts": "2026-08-05T08:24:06.732846+00:00", "case_id": "EC_023", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:24:06.732999+00:00", "case_id": "EC_023", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "9d0516ad96d793d308cec3c5929ed649"}}
+{"ts": "2026-08-05T08:24:06.737550+00:00", "case_id": "EC_023", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 280.98, "reconciled": true}}
+{"ts": "2026-08-05T08:24:06.737678+00:00", "case_id": "EC_023", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "9d0516ad96d793d308cec3c5929ed649"}}
+{"ts": "2026-08-05T08:24:06.742069+00:00", "case_id": "EC_023", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 475.89, "any_seller_late": false}}
+{"ts": "2026-08-05T08:24:06.742173+00:00", "case_id": "EC_023", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "9d0516ad96d793d308cec3c5929ed649"}}
+{"ts": "2026-08-05T08:24:06.742233+00:00", "case_id": "EC_023", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required", "refund_brl": 101.0}}
+{"ts": "2026-08-05T08:24:57.234389+00:00", "case_id": "EC_023", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:24:57.234500+00:00", "case_id": "EC_023", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:24:57.234533+00:00", "case_id": "EC_023", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:24:57.234553+00:00", "case_id": "EC_023", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:24:57.235898+00:00", "case_id": "EC_024", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "6560fb10610771449cb0463c5ba12199"}}
+{"ts": "2026-08-05T08:24:57.235944+00:00", "case_id": "EC_024", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "6560fb10610771449cb0463c5ba12199"}}
+{"ts": "2026-08-05T08:24:57.248739+00:00", "case_id": "EC_024", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "0f75924cbbe60142068f4029d744b724", "related_count": 0}}
+{"ts": "2026-08-05T08:24:57.248847+00:00", "case_id": "EC_024", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "6560fb10610771449cb0463c5ba12199"}}
+{"ts": "2026-08-05T08:24:57.258821+00:00", "case_id": "EC_024", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "canceled", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:24:57.258928+00:00", "case_id": "EC_024", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "6560fb10610771449cb0463c5ba12199"}}
+{"ts": "2026-08-05T08:24:57.261588+00:00", "case_id": "EC_024", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 333.62, "reconciled": true}}
+{"ts": "2026-08-05T08:24:57.261663+00:00", "case_id": "EC_024", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "6560fb10610771449cb0463c5ba12199"}}
+{"ts": "2026-08-05T08:24:57.265284+00:00", "case_id": "EC_024", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:24:57.265382+00:00", "case_id": "EC_024", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "6560fb10610771449cb0463c5ba12199"}}
+{"ts": "2026-08-05T08:24:57.265431+00:00", "case_id": "EC_024", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required", "refund_brl": 333.62}}
+{"ts": "2026-08-05T08:25:18.232495+00:00", "case_id": "EC_024", "agent": "CoordinatorAgent", "step": "llm_fallback", "data": {"error": "'NoneType' object has no attribute 'strip'"}}
+{"ts": "2026-08-05T08:25:18.232657+00:00", "case_id": "EC_024", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:25:18.232694+00:00", "case_id": "EC_024", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:25:18.232713+00:00", "case_id": "EC_024", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:25:18.235100+00:00", "case_id": "EC_025", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "4cf6a6de996beb9d4b190c7983be98d9"}}
+{"ts": "2026-08-05T08:25:18.235171+00:00", "case_id": "EC_025", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "4cf6a6de996beb9d4b190c7983be98d9"}}
+{"ts": "2026-08-05T08:25:18.247622+00:00", "case_id": "EC_025", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "4b979b432abe14a88cd0cde893952677", "related_count": 1}}
+{"ts": "2026-08-05T08:25:18.247742+00:00", "case_id": "EC_025", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "4cf6a6de996beb9d4b190c7983be98d9"}}
+{"ts": "2026-08-05T08:25:18.256791+00:00", "case_id": "EC_025", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:25:18.256908+00:00", "case_id": "EC_025", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "4cf6a6de996beb9d4b190c7983be98d9"}}
+{"ts": "2026-08-05T08:25:18.259546+00:00", "case_id": "EC_025", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 146.68, "reconciled": true}}
+{"ts": "2026-08-05T08:25:18.259626+00:00", "case_id": "EC_025", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "4cf6a6de996beb9d4b190c7983be98d9"}}
+{"ts": "2026-08-05T08:25:18.262517+00:00", "case_id": "EC_025", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -342.28, "any_seller_late": false}}
+{"ts": "2026-08-05T08:25:18.262613+00:00", "case_id": "EC_025", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "4cf6a6de996beb9d4b190c7983be98d9"}}
+{"ts": "2026-08-05T08:25:18.262660+00:00", "case_id": "EC_025", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action", "refund_brl": 0.0}}
+p": "done", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:04.190975+00:00", "case_id": "EC_025", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unsupported_late_claim", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.191009+00:00", "case_id": "EC_025", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.191037+00:00", "case_id": "EC_025", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.191054+00:00", "case_id": "EC_025", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:04.192356+00:00", "case_id": "EC_026", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "9b4fc5c379134e1329bd48641ba285e3"}}
+{"ts": "2026-08-05T08:20:04.192403+00:00", "case_id": "EC_026", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "9b4fc5c379134e1329bd48641ba285e3"}}
+{"ts": "2026-08-05T08:20:04.203982+00:00", "case_id": "EC_026", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "1cf8baaa3547b7f159e6a59b3ef324d6", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.204091+00:00", "case_id": "EC_026", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "9b4fc5c379134e1329bd48641ba285e3"}}
+{"ts": "2026-08-05T08:20:04.211066+00:00", "case_id": "EC_026", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "canceled", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.211153+00:00", "case_id": "EC_026", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "9b4fc5c379134e1329bd48641ba285e3"}}
+{"ts": "2026-08-05T08:20:04.213799+00:00", "case_id": "EC_026", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 670.04, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.213882+00:00", "case_id": "EC_026", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "9b4fc5c379134e1329bd48641ba285e3"}}
+{"ts": "2026-08-05T08:20:04.216410+00:00", "case_id": "EC_026", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.216474+00:00", "case_id": "EC_026", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "9b4fc5c379134e1329bd48641ba285e3"}}
+{"ts": "2026-08-05T08:20:04.216510+00:00", "case_id": "EC_026", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required", "refund_brl": 670.04}}
+{"ts": "2026-08-05T08:20:04.216538+00:00", "case_id": "EC_026", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "canceled_order_paid", "confidence": 0.86}}
+{"ts": "2026-08-05T08:20:04.216574+00:00", "case_id": "EC_026", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.216604+00:00", "case_id": "EC_026", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.216620+00:00", "case_id": "EC_026", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.218104+00:00", "case_id": "EC_027", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "9a71f055d972d1ebacec9df7376ff1e3"}}
+{"ts": "2026-08-05T08:20:04.218154+00:00", "case_id": "EC_027", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "9a71f055d972d1ebacec9df7376ff1e3"}}
+{"ts": "2026-08-05T08:20:04.229040+00:00", "case_id": "EC_027", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "3f1ae9854823f7c0a8027bd994b2ce64", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.229116+00:00", "case_id": "EC_027", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "9a71f055d972d1ebacec9df7376ff1e3"}}
+{"ts": "2026-08-05T08:20:04.235677+00:00", "case_id": "EC_027", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.235743+00:00", "case_id": "EC_027", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "9a71f055d972d1ebacec9df7376ff1e3"}}
+{"ts": "2026-08-05T08:20:04.238242+00:00", "case_id": "EC_027", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 170.18, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.238301+00:00", "case_id": "EC_027", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "9a71f055d972d1ebacec9df7376ff1e3"}}
+{"ts": "2026-08-05T08:20:04.241035+00:00", "case_id": "EC_027", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 378.81, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.241107+00:00", "case_id": "EC_027", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "9a71f055d972d1ebacec9df7376ff1e3"}}
+{"ts": "2026-08-05T08:20:04.241145+00:00", "case_id": "EC_027", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required", "refund_brl": 30.38}}
+{"ts": "2026-08-05T08:20:04.241171+00:00", "case_id": "EC_027", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_logistics", "confidence": 0.9}}
+{"ts": "2026-08-05T08:20:04.241205+00:00", "case_id": "EC_027", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.241234+00:00", "case_id": "EC_027", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.241251+00:00", "case_id": "EC_027", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.242567+00:00", "case_id": "EC_028", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "1118f05e23d1a8082fa47f8a377de658"}}
+{"ts": "2026-08-05T08:20:04.242629+00:00", "case_id": "EC_028", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "1118f05e23d1a8082fa47f8a377de658"}}
+{"ts": "2026-08-05T08:20:04.253327+00:00", "case_id": "EC_028", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "2348acb8486ed639e2a7e9e2aa198d45", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.253407+00:00", "case_id": "EC_028", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "1118f05e23d1a8082fa47f8a377de658"}}
+{"ts": "2026-08-05T08:20:04.262129+00:00", "case_id": "EC_028", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "canceled", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.262206+00:00", "case_id": "EC_028", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "1118f05e23d1a8082fa47f8a377de658"}}
+{"ts": "2026-08-05T08:20:04.264289+00:00", "case_id": "EC_028", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 242.62, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.264344+00:00", "case_id": "EC_028", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "1118f05e23d1a8082fa47f8a377de658"}}
+{"ts": "2026-08-05T08:20:04.266383+00:00", "case_id": "EC_028", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.266433+00:00", "case_id": "EC_028", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "1118f05e23d1a8082fa47f8a377de658"}}
+{"ts": "2026-08-05T08:20:04.266464+00:00", "case_id": "EC_028", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required", "refund_brl": 242.62}}
+{"ts": "2026-08-05T08:20:04.266489+00:00", "case_id": "EC_028", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "canceled_order_paid", "confidence": 0.86}}
+{"ts": "2026-08-05T08:20:04.266522+00:00", "case_id": "EC_028", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.266550+00:00", "case_id": "EC_028", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.266566+00:00", "case_id": "EC_028", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.268414+00:00", "case_id": "EC_029", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "b69321fb7d3000994c5a2b55c4f3cb01"}}
+{"ts": "2026-08-05T08:20:04.268535+00:00", "case_id": "EC_029", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "b69321fb7d3000994c5a2b55c4f3cb01"}}
+{"ts": "2026-08-05T08:20:04.278882+00:00", "case_id": "EC_029", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "19f8fcd23ed70e29220a6a2f13ecd911", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.279006+00:00", "case_id": "EC_029", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "b69321fb7d3000994c5a2b55c4f3cb01"}}
+{"ts": "2026-08-05T08:20:04.285492+00:00", "case_id": "EC_029", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:04.285596+00:00", "case_id": "EC_029", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "b69321fb7d3000994c5a2b55c4f3cb01"}}
+{"ts": "2026-08-05T08:20:04.288384+00:00", "case_id": "EC_029", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 119.52, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.288475+00:00", "case_id": "EC_029", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "b69321fb7d3000994c5a2b55c4f3cb01"}}
+{"ts": "2026-08-05T08:20:04.290985+00:00", "case_id": "EC_029", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -291.62, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.291073+00:00", "case_id": "EC_029", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "b69321fb7d3000994c5a2b55c4f3cb01"}}
+{"ts": "2026-08-05T08:20:04.291111+00:00", "case_id": "EC_029", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:04.291136+00:00", "case_id": "EC_029", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "valid_split_payment", "confidence": 0.93}}
+{"ts": "2026-08-05T08:20:04.291178+00:00", "case_id": "EC_029", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.291206+00:00", "case_id": "EC_029", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.291221+00:00", "case_id": "EC_029", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:04.292500+00:00", "case_id": "EC_030", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "676e40056867189a1b3599f3e646f421"}}
+{"ts": "2026-08-05T08:20:04.292553+00:00", "case_id": "EC_030", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "676e40056867189a1b3599f3e646f421"}}
+{"ts": "2026-08-05T08:20:04.302233+00:00", "case_id": "EC_030", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "0e627c648d467c22ca73b5e9c4040167", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.302346+00:00", "case_id": "EC_030", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "676e40056867189a1b3599f3e646f421"}}
+{"ts": "2026-08-05T08:20:04.311191+00:00", "case_id": "EC_030", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "canceled", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.311313+00:00", "case_id": "EC_030", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "676e40056867189a1b3599f3e646f421"}}
+{"ts": "2026-08-05T08:20:04.313760+00:00", "case_id": "EC_030", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 81.48, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.313831+00:00", "case_id": "EC_030", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "676e40056867189a1b3599f3e646f421"}}
+{"ts": "2026-08-05T08:20:04.316244+00:00", "case_id": "EC_030", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.316302+00:00", "case_id": "EC_030", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "676e40056867189a1b3599f3e646f421"}}
+{"ts": "2026-08-05T08:20:04.316339+00:00", "case_id": "EC_030", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required", "refund_brl": 81.48}}
+{"ts": "2026-08-05T08:20:04.316366+00:00", "case_id": "EC_030", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "canceled_order_paid", "confidence": 0.86}}
+{"ts": "2026-08-05T08:20:04.316400+00:00", "case_id": "EC_030", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.316429+00:00", "case_id": "EC_030", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.316445+00:00", "case_id": "EC_030", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.317870+00:00", "case_id": "EC_031", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "72fa449394ed9dc9093819f93ca563af"}}
+{"ts": "2026-08-05T08:20:04.317917+00:00", "case_id": "EC_031", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "72fa449394ed9dc9093819f93ca563af"}}
+{"ts": "2026-08-05T08:20:04.329286+00:00", "case_id": "EC_031", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "af51e8dd1c30737ba2dd0ece8cfa294d", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.329416+00:00", "case_id": "EC_031", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "72fa449394ed9dc9093819f93ca563af"}}
+{"ts": "2026-08-05T08:20:04.334389+00:00", "case_id": "EC_031", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "unavailable", "num_items": 0, "num_sellers": 0}}
+{"ts": "2026-08-05T08:20:04.334519+00:00", "case_id": "EC_031", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "72fa449394ed9dc9093819f93ca563af"}}
+{"ts": "2026-08-05T08:20:04.336869+00:00", "case_id": "EC_031", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 138.92, "reconciled": null}}
+{"ts": "2026-08-05T08:20:04.336931+00:00", "case_id": "EC_031", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "72fa449394ed9dc9093819f93ca563af"}}
+{"ts": "2026-08-05T08:20:04.339026+00:00", "case_id": "EC_031", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.339080+00:00", "case_id": "EC_031", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "72fa449394ed9dc9093819f93ca563af"}}
+{"ts": "2026-08-05T08:20:04.339114+00:00", "case_id": "EC_031", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required", "refund_brl": 138.92}}
+{"ts": "2026-08-05T08:20:04.339139+00:00", "case_id": "EC_031", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unavailable_order_paid", "confidence": 0.81}}
+{"ts": "2026-08-05T08:20:04.339170+00:00", "case_id": "EC_031", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.339195+00:00", "case_id": "EC_031", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.339212+00:00", "case_id": "EC_031", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.340488+00:00", "case_id": "EC_032", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "d3782eb2976abf986175941c51364aab"}}
+{"ts": "2026-08-05T08:20:04.340541+00:00", "case_id": "EC_032", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "d3782eb2976abf986175941c51364aab"}}
+{"ts": "2026-08-05T08:20:04.350273+00:00", "case_id": "EC_032", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "94431ab24129f0060b53a89cfd62462f", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.350402+00:00", "case_id": "EC_032", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "d3782eb2976abf986175941c51364aab"}}
+{"ts": "2026-08-05T08:20:04.358042+00:00", "case_id": "EC_032", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.358125+00:00", "case_id": "EC_032", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "d3782eb2976abf986175941c51364aab"}}
+{"ts": "2026-08-05T08:20:04.360264+00:00", "case_id": "EC_032", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 1048.64, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.360320+00:00", "case_id": "EC_032", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "d3782eb2976abf986175941c51364aab"}}
+{"ts": "2026-08-05T08:20:04.362377+00:00", "case_id": "EC_032", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 108.31, "any_seller_late": true}}
+{"ts": "2026-08-05T08:20:04.362431+00:00", "case_id": "EC_032", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "d3782eb2976abf986175941c51364aab"}}
+{"ts": "2026-08-05T08:20:04.362462+00:00", "case_id": "EC_032", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 31.64}}
+{"ts": "2026-08-05T08:20:04.362499+00:00", "case_id": "EC_032", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_seller", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.362534+00:00", "case_id": "EC_032", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.362561+00:00", "case_id": "EC_032", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.362577+00:00", "case_id": "EC_032", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.363939+00:00", "case_id": "EC_033", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "edefc0fa09c98cc491e9d2cf95ee4a5f"}}
+{"ts": "2026-08-05T08:20:04.363984+00:00", "case_id": "EC_033", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "edefc0fa09c98cc491e9d2cf95ee4a5f"}}
+{"ts": "2026-08-05T08:20:04.373303+00:00", "case_id": "EC_033", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "f019bdb8008924769fe88319cddedda9", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.373405+00:00", "case_id": "EC_033", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "edefc0fa09c98cc491e9d2cf95ee4a5f"}}
+{"ts": "2026-08-05T08:20:04.377740+00:00", "case_id": "EC_033", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "unavailable", "num_items": 0, "num_sellers": 0}}
+{"ts": "2026-08-05T08:20:04.377808+00:00", "case_id": "EC_033", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "edefc0fa09c98cc491e9d2cf95ee4a5f"}}
+{"ts": "2026-08-05T08:20:04.379914+00:00", "case_id": "EC_033", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 35.96, "reconciled": null}}
+{"ts": "2026-08-05T08:20:04.379970+00:00", "case_id": "EC_033", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "edefc0fa09c98cc491e9d2cf95ee4a5f"}}
+{"ts": "2026-08-05T08:20:04.382151+00:00", "case_id": "EC_033", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.382205+00:00", "case_id": "EC_033", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "edefc0fa09c98cc491e9d2cf95ee4a5f"}}
+{"ts": "2026-08-05T08:20:04.382238+00:00", "case_id": "EC_033", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required", "refund_brl": 35.96}}
+{"ts": "2026-08-05T08:20:04.382264+00:00", "case_id": "EC_033", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unavailable_order_paid", "confidence": 0.81}}
+{"ts": "2026-08-05T08:20:04.382294+00:00", "case_id": "EC_033", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.382319+00:00", "case_id": "EC_033", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.382334+00:00", "case_id": "EC_033", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.384135+00:00", "case_id": "EC_034", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "b210c676cae65f95f7e08a49d195e1a1"}}
+{"ts": "2026-08-05T08:20:04.384214+00:00", "case_id": "EC_034", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "b210c676cae65f95f7e08a49d195e1a1"}}
+{"ts": "2026-08-05T08:20:04.393696+00:00", "case_id": "EC_034", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "ec9c7ebb2a345ccd42c46b94ecb4d319", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.393819+00:00", "case_id": "EC_034", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "b210c676cae65f95f7e08a49d195e1a1"}}
+{"ts": "2026-08-05T08:20:04.399077+00:00", "case_id": "EC_034", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "unavailable", "num_items": 0, "num_sellers": 0}}
+{"ts": "2026-08-05T08:20:04.399186+00:00", "case_id": "EC_034", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "b210c676cae65f95f7e08a49d195e1a1"}}
+{"ts": "2026-08-05T08:20:04.402617+00:00", "case_id": "EC_034", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 85.14, "reconciled": null}}
+{"ts": "2026-08-05T08:20:04.402931+00:00", "case_id": "EC_034", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "b210c676cae65f95f7e08a49d195e1a1"}}
+{"ts": "2026-08-05T08:20:04.406163+00:00", "case_id": "EC_034", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.406249+00:00", "case_id": "EC_034", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "b210c676cae65f95f7e08a49d195e1a1"}}
+{"ts": "2026-08-05T08:20:04.406297+00:00", "case_id": "EC_034", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required", "refund_brl": 85.14}}
+{"ts": "2026-08-05T08:20:04.406327+00:00", "case_id": "EC_034", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unavailable_order_paid", "confidence": 0.81}}
+{"ts": "2026-08-05T08:20:04.406366+00:00", "case_id": "EC_034", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.406416+00:00", "case_id": "EC_034", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.406472+00:00", "case_id": "EC_034", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.408543+00:00", "case_id": "EC_035", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "ae443cb420061bab1f2c5e3ad279fde8"}}
+{"ts": "2026-08-05T08:20:04.408630+00:00", "case_id": "EC_035", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "ae443cb420061bab1f2c5e3ad279fde8"}}
+{"ts": "2026-08-05T08:20:04.421378+00:00", "case_id": "EC_035", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "6e14116d3471123fcf057c203fd7e801", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.421496+00:00", "case_id": "EC_035", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "ae443cb420061bab1f2c5e3ad279fde8"}}
+{"ts": "2026-08-05T08:20:04.426842+00:00", "case_id": "EC_035", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "unavailable", "num_items": 0, "num_sellers": 0}}
+{"ts": "2026-08-05T08:20:04.426920+00:00", "case_id": "EC_035", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "ae443cb420061bab1f2c5e3ad279fde8"}}
+{"ts": "2026-08-05T08:20:04.430484+00:00", "case_id": "EC_035", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 132.37, "reconciled": null}}
+{"ts": "2026-08-05T08:20:04.430569+00:00", "case_id": "EC_035", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "ae443cb420061bab1f2c5e3ad279fde8"}}
+{"ts": "2026-08-05T08:20:04.433016+00:00", "case_id": "EC_035", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.433069+00:00", "case_id": "EC_035", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "ae443cb420061bab1f2c5e3ad279fde8"}}
+{"ts": "2026-08-05T08:20:04.433105+00:00", "case_id": "EC_035", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required", "refund_brl": 132.37}}
+{"ts": "2026-08-05T08:20:04.433133+00:00", "case_id": "EC_035", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unavailable_order_paid", "confidence": 0.81}}
+{"ts": "2026-08-05T08:20:04.433166+00:00", "case_id": "EC_035", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.433193+00:00", "case_id": "EC_035", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.433223+00:00", "case_id": "EC_035", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.434825+00:00", "case_id": "EC_036", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "201797d3f567dc70cc5732ecf055e346"}}
+{"ts": "2026-08-05T08:20:04.434893+00:00", "case_id": "EC_036", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "201797d3f567dc70cc5732ecf055e346"}}
+{"ts": "2026-08-05T08:20:04.445403+00:00", "case_id": "EC_036", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "254f01c0c4853e5c23a801f29069f932", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.445503+00:00", "case_id": "EC_036", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "201797d3f567dc70cc5732ecf055e346"}}
+{"ts": "2026-08-05T08:20:04.453035+00:00", "case_id": "EC_036", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:04.453109+00:00", "case_id": "EC_036", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "201797d3f567dc70cc5732ecf055e346"}}
+{"ts": "2026-08-05T08:20:04.455442+00:00", "case_id": "EC_036", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 161.86, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.455509+00:00", "case_id": "EC_036", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "201797d3f567dc70cc5732ecf055e346"}}
+{"ts": "2026-08-05T08:20:04.457822+00:00", "case_id": "EC_036", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -367.3, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.457877+00:00", "case_id": "EC_036", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "201797d3f567dc70cc5732ecf055e346"}}
+{"ts": "2026-08-05T08:20:04.457910+00:00", "case_id": "EC_036", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:04.457936+00:00", "case_id": "EC_036", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "valid_split_payment", "confidence": 0.93}}
+{"ts": "2026-08-05T08:20:04.457970+00:00", "case_id": "EC_036", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.457999+00:00", "case_id": "EC_036", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.458016+00:00", "case_id": "EC_036", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:04.459799+00:00", "case_id": "EC_037", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "9f5bd892aa4c461b116e5c163f16b40a"}}
+{"ts": "2026-08-05T08:20:04.459880+00:00", "case_id": "EC_037", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "9f5bd892aa4c461b116e5c163f16b40a"}}
+{"ts": "2026-08-05T08:20:04.470938+00:00", "case_id": "EC_037", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "317f563ca3576550955f39a346b15be5", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.471036+00:00", "case_id": "EC_037", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "9f5bd892aa4c461b116e5c163f16b40a"}}
+{"ts": "2026-08-05T08:20:04.478254+00:00", "case_id": "EC_037", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.478354+00:00", "case_id": "EC_037", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "9f5bd892aa4c461b116e5c163f16b40a"}}
+{"ts": "2026-08-05T08:20:04.481576+00:00", "case_id": "EC_037", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 220.18, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.481646+00:00", "case_id": "EC_037", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "9f5bd892aa4c461b116e5c163f16b40a"}}
+{"ts": "2026-08-05T08:20:04.484194+00:00", "case_id": "EC_037", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 106.64, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.484272+00:00", "case_id": "EC_037", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "9f5bd892aa4c461b116e5c163f16b40a"}}
+{"ts": "2026-08-05T08:20:04.484309+00:00", "case_id": "EC_037", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required", "refund_brl": 24.38}}
+{"ts": "2026-08-05T08:20:04.484336+00:00", "case_id": "EC_037", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_logistics", "confidence": 0.9}}
+{"ts": "2026-08-05T08:20:04.484371+00:00", "case_id": "EC_037", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.484401+00:00", "case_id": "EC_037", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.484418+00:00", "case_id": "EC_037", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.486744+00:00", "case_id": "EC_038", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "efcd8852328a37fca811747c09c6fb69"}}
+{"ts": "2026-08-05T08:20:04.486818+00:00", "case_id": "EC_038", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "efcd8852328a37fca811747c09c6fb69"}}
+{"ts": "2026-08-05T08:20:04.498974+00:00", "case_id": "EC_038", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "9b7fcfa05fb6f8b88fea3d74a6ba77d6", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.499070+00:00", "case_id": "EC_038", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "efcd8852328a37fca811747c09c6fb69"}}
+{"ts": "2026-08-05T08:20:04.505500+00:00", "case_id": "EC_038", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.505581+00:00", "case_id": "EC_038", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "efcd8852328a37fca811747c09c6fb69"}}
+{"ts": "2026-08-05T08:20:04.508974+00:00", "case_id": "EC_038", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 59.88, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.509053+00:00", "case_id": "EC_038", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "efcd8852328a37fca811747c09c6fb69"}}
+{"ts": "2026-08-05T08:20:04.512290+00:00", "case_id": "EC_038", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -200.9, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.512416+00:00", "case_id": "EC_038", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "efcd8852328a37fca811747c09c6fb69"}}
+{"ts": "2026-08-05T08:20:04.512559+00:00", "case_id": "EC_038", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:04.512671+00:00", "case_id": "EC_038", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unsupported_late_claim", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.512808+00:00", "case_id": "EC_038", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.512923+00:00", "case_id": "EC_038", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.512996+00:00", "case_id": "EC_038", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:04.515194+00:00", "case_id": "EC_039", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "8ac5066a163c60c1ae9bf17200df3dd1"}}
+{"ts": "2026-08-05T08:20:04.515268+00:00", "case_id": "EC_039", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "8ac5066a163c60c1ae9bf17200df3dd1"}}
+{"ts": "2026-08-05T08:20:04.529825+00:00", "case_id": "EC_039", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "bce006e903be688f122a39f45b210090", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.529960+00:00", "case_id": "EC_039", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "8ac5066a163c60c1ae9bf17200df3dd1"}}
+{"ts": "2026-08-05T08:20:04.539726+00:00", "case_id": "EC_039", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.539810+00:00", "case_id": "EC_039", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "8ac5066a163c60c1ae9bf17200df3dd1"}}
+{"ts": "2026-08-05T08:20:04.543474+00:00", "case_id": "EC_039", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 180.34, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.543537+00:00", "case_id": "EC_039", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "8ac5066a163c60c1ae9bf17200df3dd1"}}
+{"ts": "2026-08-05T08:20:04.546058+00:00", "case_id": "EC_039", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 421.86, "any_seller_late": true}}
+{"ts": "2026-08-05T08:20:04.546119+00:00", "case_id": "EC_039", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "8ac5066a163c60c1ae9bf17200df3dd1"}}
+{"ts": "2026-08-05T08:20:04.546170+00:00", "case_id": "EC_039", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 30.54}}
+{"ts": "2026-08-05T08:20:04.546196+00:00", "case_id": "EC_039", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_seller", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.546232+00:00", "case_id": "EC_039", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.546262+00:00", "case_id": "EC_039", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.546280+00:00", "case_id": "EC_039", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.547797+00:00", "case_id": "EC_040", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "992cbe3e064cd39f9ccde60a29ffcd3c"}}
+{"ts": "2026-08-05T08:20:04.547863+00:00", "case_id": "EC_040", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "992cbe3e064cd39f9ccde60a29ffcd3c"}}
+{"ts": "2026-08-05T08:20:04.558972+00:00", "case_id": "EC_040", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "16534282c820ca754b8de47754bb6d1a", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.559058+00:00", "case_id": "EC_040", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "992cbe3e064cd39f9ccde60a29ffcd3c"}}
+{"ts": "2026-08-05T08:20:04.566973+00:00", "case_id": "EC_040", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.567047+00:00", "case_id": "EC_040", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "992cbe3e064cd39f9ccde60a29ffcd3c"}}
+{"ts": "2026-08-05T08:20:04.569538+00:00", "case_id": "EC_040", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 364.88, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.569602+00:00", "case_id": "EC_040", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "992cbe3e064cd39f9ccde60a29ffcd3c"}}
+{"ts": "2026-08-05T08:20:04.572595+00:00", "case_id": "EC_040", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 429.37, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.572667+00:00", "case_id": "EC_040", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "992cbe3e064cd39f9ccde60a29ffcd3c"}}
+{"ts": "2026-08-05T08:20:04.572713+00:00", "case_id": "EC_040", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required", "refund_brl": 75.98}}
+{"ts": "2026-08-05T08:20:04.572743+00:00", "case_id": "EC_040", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_logistics", "confidence": 0.9}}
+{"ts": "2026-08-05T08:20:04.572778+00:00", "case_id": "EC_040", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.572808+00:00", "case_id": "EC_040", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.572825+00:00", "case_id": "EC_040", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_logistics", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.574315+00:00", "case_id": "EC_041", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "614bc59c7d5e038587336616e3198e33"}}
+{"ts": "2026-08-05T08:20:04.574397+00:00", "case_id": "EC_041", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "614bc59c7d5e038587336616e3198e33"}}
+{"ts": "2026-08-05T08:20:04.586362+00:00", "case_id": "EC_041", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "88e177ee7be84f7835294d1440dea968", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.586457+00:00", "case_id": "EC_041", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "614bc59c7d5e038587336616e3198e33"}}
+{"ts": "2026-08-05T08:20:04.593665+00:00", "case_id": "EC_041", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:04.593750+00:00", "case_id": "EC_041", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "614bc59c7d5e038587336616e3198e33"}}
+{"ts": "2026-08-05T08:20:04.595972+00:00", "case_id": "EC_041", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 126.3, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.596043+00:00", "case_id": "EC_041", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "614bc59c7d5e038587336616e3198e33"}}
+{"ts": "2026-08-05T08:20:04.598278+00:00", "case_id": "EC_041", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -315.14, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.598347+00:00", "case_id": "EC_041", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "614bc59c7d5e038587336616e3198e33"}}
+{"ts": "2026-08-05T08:20:04.598376+00:00", "case_id": "EC_041", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:04.598400+00:00", "case_id": "EC_041", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "valid_split_payment", "confidence": 0.93}}
+{"ts": "2026-08-05T08:20:04.598432+00:00", "case_id": "EC_041", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.598459+00:00", "case_id": "EC_041", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.598476+00:00", "case_id": "EC_041", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:04.601029+00:00", "case_id": "EC_042", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "0c65eb5a1415db7a20dfc869c9277e7a"}}
+{"ts": "2026-08-05T08:20:04.601096+00:00", "case_id": "EC_042", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "0c65eb5a1415db7a20dfc869c9277e7a"}}
+{"ts": "2026-08-05T08:20:04.612653+00:00", "case_id": "EC_042", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "53c84ac43bbfafb7a6b5d9076ab423c7", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.612749+00:00", "case_id": "EC_042", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "0c65eb5a1415db7a20dfc869c9277e7a"}}
+{"ts": "2026-08-05T08:20:04.619739+00:00", "case_id": "EC_042", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 1, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.619853+00:00", "case_id": "EC_042", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "0c65eb5a1415db7a20dfc869c9277e7a"}}
+{"ts": "2026-08-05T08:20:04.623969+00:00", "case_id": "EC_042", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 57.6, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.624082+00:00", "case_id": "EC_042", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "0c65eb5a1415db7a20dfc869c9277e7a"}}
+{"ts": "2026-08-05T08:20:04.627645+00:00", "case_id": "EC_042", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 203.67, "any_seller_late": true}}
+{"ts": "2026-08-05T08:20:04.627751+00:00", "case_id": "EC_042", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "0c65eb5a1415db7a20dfc869c9277e7a"}}
+{"ts": "2026-08-05T08:20:04.627788+00:00", "case_id": "EC_042", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 17.6}}
+{"ts": "2026-08-05T08:20:04.627816+00:00", "case_id": "EC_042", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_seller", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.627852+00:00", "case_id": "EC_042", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.627883+00:00", "case_id": "EC_042", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.627900+00:00", "case_id": "EC_042", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.629181+00:00", "case_id": "EC_043", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "e58fb7bfd033514475ab0883ded704f4"}}
+{"ts": "2026-08-05T08:20:04.629228+00:00", "case_id": "EC_043", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "e58fb7bfd033514475ab0883ded704f4"}}
+{"ts": "2026-08-05T08:20:04.642476+00:00", "case_id": "EC_043", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "8cda74bcb48b709a90e5441e19b1d759", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.642582+00:00", "case_id": "EC_043", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "e58fb7bfd033514475ab0883ded704f4"}}
+{"ts": "2026-08-05T08:20:04.648377+00:00", "case_id": "EC_043", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "unavailable", "num_items": 0, "num_sellers": 0}}
+{"ts": "2026-08-05T08:20:04.648481+00:00", "case_id": "EC_043", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "e58fb7bfd033514475ab0883ded704f4"}}
+{"ts": "2026-08-05T08:20:04.651756+00:00", "case_id": "EC_043", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 18.37, "reconciled": null}}
+{"ts": "2026-08-05T08:20:04.651848+00:00", "case_id": "EC_043", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "e58fb7bfd033514475ab0883ded704f4"}}
+{"ts": "2026-08-05T08:20:04.654812+00:00", "case_id": "EC_043", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.654902+00:00", "case_id": "EC_043", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "e58fb7bfd033514475ab0883ded704f4"}}
+{"ts": "2026-08-05T08:20:04.654943+00:00", "case_id": "EC_043", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required", "refund_brl": 18.37}}
+{"ts": "2026-08-05T08:20:04.654971+00:00", "case_id": "EC_043", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unavailable_order_paid", "confidence": 0.81}}
+{"ts": "2026-08-05T08:20:04.655017+00:00", "case_id": "EC_043", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.655050+00:00", "case_id": "EC_043", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.655067+00:00", "case_id": "EC_043", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unavailable_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.656496+00:00", "case_id": "EC_044", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "a833e4af2b4c893929b9f3adce3ecbeb"}}
+{"ts": "2026-08-05T08:20:04.656561+00:00", "case_id": "EC_044", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "a833e4af2b4c893929b9f3adce3ecbeb"}}
+{"ts": "2026-08-05T08:20:04.670224+00:00", "case_id": "EC_044", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "ea4bee12671b768aa4ffdb2864707e5d", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.670320+00:00", "case_id": "EC_044", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "a833e4af2b4c893929b9f3adce3ecbeb"}}
+{"ts": "2026-08-05T08:20:04.679477+00:00", "case_id": "EC_044", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:04.679579+00:00", "case_id": "EC_044", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "a833e4af2b4c893929b9f3adce3ecbeb"}}
+{"ts": "2026-08-05T08:20:04.682200+00:00", "case_id": "EC_044", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 261.27, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.682273+00:00", "case_id": "EC_044", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "a833e4af2b4c893929b9f3adce3ecbeb"}}
+{"ts": "2026-08-05T08:20:04.684734+00:00", "case_id": "EC_044", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -364.67, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.684803+00:00", "case_id": "EC_044", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "a833e4af2b4c893929b9f3adce3ecbeb"}}
+{"ts": "2026-08-05T08:20:04.684837+00:00", "case_id": "EC_044", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:04.684862+00:00", "case_id": "EC_044", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unsupported_late_claim", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.684912+00:00", "case_id": "EC_044", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.684941+00:00", "case_id": "EC_044", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.684958+00:00", "case_id": "EC_044", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:04.686611+00:00", "case_id": "EC_045", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "fe64170e936bc5f6a6a41def260984b9"}}
+{"ts": "2026-08-05T08:20:04.686673+00:00", "case_id": "EC_045", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "fe64170e936bc5f6a6a41def260984b9"}}
+{"ts": "2026-08-05T08:20:04.698505+00:00", "case_id": "EC_045", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "e13173fd16b572985c50742546978614", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.698601+00:00", "case_id": "EC_045", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "fe64170e936bc5f6a6a41def260984b9"}}
+{"ts": "2026-08-05T08:20:04.706377+00:00", "case_id": "EC_045", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:04.706455+00:00", "case_id": "EC_045", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "fe64170e936bc5f6a6a41def260984b9"}}
+{"ts": "2026-08-05T08:20:04.709268+00:00", "case_id": "EC_045", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 233.36, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.709344+00:00", "case_id": "EC_045", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "fe64170e936bc5f6a6a41def260984b9"}}
+{"ts": "2026-08-05T08:20:04.711768+00:00", "case_id": "EC_045", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -436.81, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.711834+00:00", "case_id": "EC_045", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "fe64170e936bc5f6a6a41def260984b9"}}
+{"ts": "2026-08-05T08:20:04.711867+00:00", "case_id": "EC_045", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:04.711893+00:00", "case_id": "EC_045", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unsupported_late_claim", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.711927+00:00", "case_id": "EC_045", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.711958+00:00", "case_id": "EC_045", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.711975+00:00", "case_id": "EC_045", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:04.713834+00:00", "case_id": "EC_046", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "0e3ec3c17b64c6cc7bc01bba21e7afdf"}}
+{"ts": "2026-08-05T08:20:04.713907+00:00", "case_id": "EC_046", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "0e3ec3c17b64c6cc7bc01bba21e7afdf"}}
+{"ts": "2026-08-05T08:20:04.725053+00:00", "case_id": "EC_046", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "fc3ae503d8cbc4c02a2d8e467b7bbfe5", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.725146+00:00", "case_id": "EC_046", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "0e3ec3c17b64c6cc7bc01bba21e7afdf"}}
+{"ts": "2026-08-05T08:20:04.731938+00:00", "case_id": "EC_046", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.732019+00:00", "case_id": "EC_046", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "0e3ec3c17b64c6cc7bc01bba21e7afdf"}}
+{"ts": "2026-08-05T08:20:04.734564+00:00", "case_id": "EC_046", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 145.32, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.734630+00:00", "case_id": "EC_046", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "0e3ec3c17b64c6cc7bc01bba21e7afdf"}}
+{"ts": "2026-08-05T08:20:04.737364+00:00", "case_id": "EC_046", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 317.79, "any_seller_late": true}}
+{"ts": "2026-08-05T08:20:04.737437+00:00", "case_id": "EC_046", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "0e3ec3c17b64c6cc7bc01bba21e7afdf"}}
+{"ts": "2026-08-05T08:20:04.737591+00:00", "case_id": "EC_046", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 25.52}}
+{"ts": "2026-08-05T08:20:04.737658+00:00", "case_id": "EC_046", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_seller", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.737711+00:00", "case_id": "EC_046", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.737752+00:00", "case_id": "EC_046", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.737776+00:00", "case_id": "EC_046", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.741278+00:00", "case_id": "EC_047", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "2cfc79d9582e9135c0a9b61fa60e6b21"}}
+{"ts": "2026-08-05T08:20:04.741351+00:00", "case_id": "EC_047", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "2cfc79d9582e9135c0a9b61fa60e6b21"}}
+{"ts": "2026-08-05T08:20:04.754384+00:00", "case_id": "EC_047", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "0058f300f57d7b93c477a131a59b36c3", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.754489+00:00", "case_id": "EC_047", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "2cfc79d9582e9135c0a9b61fa60e6b21"}}
+{"ts": "2026-08-05T08:20:04.761462+00:00", "case_id": "EC_047", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "canceled", "num_items": 1, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.761550+00:00", "case_id": "EC_047", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "2cfc79d9582e9135c0a9b61fa60e6b21"}}
+{"ts": "2026-08-05T08:20:04.763895+00:00", "case_id": "EC_047", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 79.56, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.763967+00:00", "case_id": "EC_047", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "2cfc79d9582e9135c0a9b61fa60e6b21"}}
+{"ts": "2026-08-05T08:20:04.766549+00:00", "case_id": "EC_047", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": null, "delivery_variance_hours": null, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.766618+00:00", "case_id": "EC_047", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "2cfc79d9582e9135c0a9b61fa60e6b21"}}
+{"ts": "2026-08-05T08:20:04.766656+00:00", "case_id": "EC_047", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required", "refund_brl": 79.56}}
+{"ts": "2026-08-05T08:20:04.766684+00:00", "case_id": "EC_047", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "canceled_order_paid", "confidence": 0.86}}
+{"ts": "2026-08-05T08:20:04.766717+00:00", "case_id": "EC_047", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.766756+00:00", "case_id": "EC_047", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.766772+00:00", "case_id": "EC_047", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "canceled_order_paid", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.768376+00:00", "case_id": "EC_048", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "b8ed89bd3f1fe72244f0f616acdc7da1"}}
+{"ts": "2026-08-05T08:20:04.768431+00:00", "case_id": "EC_048", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "b8ed89bd3f1fe72244f0f616acdc7da1"}}
+{"ts": "2026-08-05T08:20:04.779725+00:00", "case_id": "EC_048", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "0abee71cd257861a0944e2a81cea4a50", "related_count": 1}}
+{"ts": "2026-08-05T08:20:04.779806+00:00", "case_id": "EC_048", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "b8ed89bd3f1fe72244f0f616acdc7da1"}}
+{"ts": "2026-08-05T08:20:04.789540+00:00", "case_id": "EC_048", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 3, "num_sellers": 1}}
+{"ts": "2026-08-05T08:20:04.789616+00:00", "case_id": "EC_048", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "b8ed89bd3f1fe72244f0f616acdc7da1"}}
+{"ts": "2026-08-05T08:20:04.792219+00:00", "case_id": "EC_048", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 400.44, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.792283+00:00", "case_id": "EC_048", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "b8ed89bd3f1fe72244f0f616acdc7da1"}}
+{"ts": "2026-08-05T08:20:04.794626+00:00", "case_id": "EC_048", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": true, "delivery_variance_hours": 185.7, "any_seller_late": true}}
+{"ts": "2026-08-05T08:20:04.794698+00:00", "case_id": "EC_048", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "b8ed89bd3f1fe72244f0f616acdc7da1"}}
+{"ts": "2026-08-05T08:20:04.794750+00:00", "case_id": "EC_048", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required", "refund_brl": 49.74}}
+{"ts": "2026-08-05T08:20:04.794777+00:00", "case_id": "EC_048", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "late_delivery_seller", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.794811+00:00", "case_id": "EC_048", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.794850+00:00", "case_id": "EC_048", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.794867+00:00", "case_id": "EC_048", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "late_delivery_seller", "case_status": "action_required"}}
+{"ts": "2026-08-05T08:20:04.796318+00:00", "case_id": "EC_049", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "7c29f6fa9efcbf410b4bbb9362b9f7c9"}}
+{"ts": "2026-08-05T08:20:04.796367+00:00", "case_id": "EC_049", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "7c29f6fa9efcbf410b4bbb9362b9f7c9"}}
+{"ts": "2026-08-05T08:20:04.806852+00:00", "case_id": "EC_049", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "d73238dc01a257f5439f611e3cdb199c", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.806982+00:00", "case_id": "EC_049", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "7c29f6fa9efcbf410b4bbb9362b9f7c9"}}
+{"ts": "2026-08-05T08:20:04.815453+00:00", "case_id": "EC_049", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 3, "num_sellers": 3}}
+{"ts": "2026-08-05T08:20:04.815524+00:00", "case_id": "EC_049", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "7c29f6fa9efcbf410b4bbb9362b9f7c9"}}
+{"ts": "2026-08-05T08:20:04.818202+00:00", "case_id": "EC_049", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 255.66, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.818275+00:00", "case_id": "EC_049", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "7c29f6fa9efcbf410b4bbb9362b9f7c9"}}
+{"ts": "2026-08-05T08:20:04.820659+00:00", "case_id": "EC_049", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -463.67, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.820722+00:00", "case_id": "EC_049", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "7c29f6fa9efcbf410b4bbb9362b9f7c9"}}
+{"ts": "2026-08-05T08:20:04.820755+00:00", "case_id": "EC_049", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:04.820779+00:00", "case_id": "EC_049", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "valid_split_payment", "confidence": 0.93}}
+{"ts": "2026-08-05T08:20:04.820813+00:00", "case_id": "EC_049", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.820843+00:00", "case_id": "EC_049", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.820860+00:00", "case_id": "EC_049", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "valid_split_payment", "case_status": "no_action"}}
+{"ts": "2026-08-05T08:20:04.822842+00:00", "case_id": "EC_050", "agent": "CoordinatorAgent", "step": "start", "data": {"order_id": "370098d35ccd8a2af86b57c81ac7d24f"}}
+{"ts": "2026-08-05T08:20:04.822905+00:00", "case_id": "EC_050", "agent": "CustomerAgent", "step": "start", "data": {"order_id": "370098d35ccd8a2af86b57c81ac7d24f"}}
+{"ts": "2026-08-05T08:20:04.834583+00:00", "case_id": "EC_050", "agent": "CustomerAgent", "step": "done", "data": {"customer_unique_id": "e8a425f2b5d885c380a80386d64277b8", "related_count": 0}}
+{"ts": "2026-08-05T08:20:04.834700+00:00", "case_id": "EC_050", "agent": "OrderProductAgent", "step": "start", "data": {"order_id": "370098d35ccd8a2af86b57c81ac7d24f"}}
+{"ts": "2026-08-05T08:20:04.845247+00:00", "case_id": "EC_050", "agent": "OrderProductAgent", "step": "done", "data": {"order_status": "delivered", "num_items": 2, "num_sellers": 2}}
+{"ts": "2026-08-05T08:20:04.845364+00:00", "case_id": "EC_050", "agent": "PaymentAgent", "step": "start", "data": {"order_id": "370098d35ccd8a2af86b57c81ac7d24f"}}
+{"ts": "2026-08-05T08:20:04.852304+00:00", "case_id": "EC_050", "agent": "PaymentAgent", "step": "done", "data": {"payment_total": 241.57, "reconciled": true}}
+{"ts": "2026-08-05T08:20:04.852419+00:00", "case_id": "EC_050", "agent": "DeliveryAgent", "step": "start", "data": {"order_id": "370098d35ccd8a2af86b57c81ac7d24f"}}
+{"ts": "2026-08-05T08:20:04.857195+00:00", "case_id": "EC_050", "agent": "DeliveryAgent", "step": "done", "data": {"is_late_delivery": false, "delivery_variance_hours": -437.51, "any_seller_late": false}}
+{"ts": "2026-08-05T08:20:04.857323+00:00", "case_id": "EC_050", "agent": "PolicyAgent", "step": "start", "data": {"order_id": "370098d35ccd8a2af86b57c81ac7d24f"}}
+{"ts": "2026-08-05T08:20:04.857362+00:00", "case_id": "EC_050", "agent": "PolicyAgent", "step": "done", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action", "refund_brl": 0.0}}
+{"ts": "2026-08-05T08:20:04.857391+00:00", "case_id": "EC_050", "agent": "CoordinatorAgent", "step": "confidence_scored", "data": {"primary": "unsupported_late_claim", "confidence": 0.95}}
+{"ts": "2026-08-05T08:20:04.857430+00:00", "case_id": "EC_050", "agent": "VerifierAgent", "step": "start"}
+{"ts": "2026-08-05T08:20:04.857461+00:00", "case_id": "EC_050", "agent": "VerifierAgent", "step": "done", "data": {"issues": "none"}}
+{"ts": "2026-08-05T08:20:04.857479+00:00", "case_id": "EC_050", "agent": "CoordinatorAgent", "step": "complete", "data": {"primary_issue": "unsupported_late_claim", "case_status": "no_action"}}

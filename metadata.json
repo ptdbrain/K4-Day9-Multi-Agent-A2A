@@ -1,0 +1,18 @@
+{
+  "model": "qwen/qwen3.5-9b",
+  "parameter_size": "9B",
+  "framework": "openai (OpenRouter-compatible)",
+  "provider": "OpenRouter (https://openrouter.ai)",
+  "runtime": "Python 3.10+",
+  "agents": [
+    "CoordinatorAgent",
+    "CustomerAgent",
+    "OrderProductAgent",
+    "PaymentAgent",
+    "DeliveryAgent",
+    "PolicyAgent",
+    "VerifierAgent"
+  ],
+  "policy_version": "EC_POLICY_V2",
+  "dataset": "Olist Brazilian E-Commerce Public Dataset"
+}

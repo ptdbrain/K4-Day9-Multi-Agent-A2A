@@ -1,0 +1,33 @@
+# .gitignore for K4-Day9-Multi-Agent-A2A
+
+# Environment / secrets (NEVER commit)
+.env
+*.env.local
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Output zip (nén riêng khi nộp)
+output.zip
+*.zip
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter (nếu có)
+.ipynb_checkpoints/
